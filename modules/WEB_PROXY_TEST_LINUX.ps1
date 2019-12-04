@@ -83,7 +83,7 @@ foreach($item in $csv) {
         $ip = $ip[0]
     }
     try {
-        $httptemp = invoke-webrequest -ErrorAction Ignore -UseBasicParsing -TimeoutSec 3 -Headers $h1  http://$website
+        $httptemp = invoke-webrequest -UserAgent "Web Filter Strength Test - Not Malware" -ErrorAction Ignore -UseBasicParsing -TimeoutSec 3 -Headers $h1  http://$website
         $httpcontent = $httptemp.Content -join [Environment]::NewLine
         $httparr = $httpcontent -Split "<title>"
         $temparr = $httparr[1] -Split "</title>"
@@ -97,7 +97,7 @@ foreach($item in $csv) {
 
     }
     try {
-        $httpstemp = invoke-webrequest -UseBasicParsing -ErrorAction Ignore -TimeoutSec 3 -Headers $h1  https://$website
+        $httpstemp = invoke-webrequest  -UserAgent "Web Filter Strength Test - Not Malware" -UseBasicParsing -ErrorAction Ignore -TimeoutSec 3 -Headers $h1  https://$website
         $httpscontent = $httpstemp.Content -join [Environment]::NewLine
         $httpsarr = $httpscontent -Split "<title>"
         $temparr = $httpsarr[1] -Split "</title>"
