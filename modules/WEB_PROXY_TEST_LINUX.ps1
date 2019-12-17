@@ -42,7 +42,7 @@ $aResults = @()
 Write-Host "## WEB FILTER STRENGTH CONFIGURATION TESTER -- Importing File Containing Websites/Categories to be tested"
 #Import Websites CSV
 if (Test-Path variable:global:csv) {
-	Write-Host "CSV Exists - Skipping"
+	Write-Host "## WEB FILTER STRENGTH CONFIGURATION TESTER -- Configuration File Updated"
     } else {
 	$config_path = Read-Host -Prompt " Provide a full path to the FOLDER with the web_sites.csv file (under config directory)"
 
@@ -54,12 +54,6 @@ if (Test-Path variable:global:csv) {
 			$config_path =  Read-Host -Prompt "    Provide a full path to the FOLDER with the web_sites.csv file (under config directory)"
 		}
 	}until($tempstuff)
-}
-
-if (Test-Path variable:global:foutput) {
-	Write-Host "GOT IT"
-} else {
-	$foutput = Read-Host -Prompt "Provide a fulle path to the DIRECTORY for the output of the tool"
 }
 
 Write-Host "## WEB FILTER STRENGTH CONFIGURATION TESTER -- Testing Websites Individually"
