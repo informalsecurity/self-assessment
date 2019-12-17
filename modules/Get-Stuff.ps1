@@ -32,7 +32,7 @@ function Get-Stuff {
             #Create a new AES .NET Crypto Object
             $AesObject = New-Object System.Security.Cryptography.AesCryptoServiceProvider
 	    $AesObject = New-Object System.Security.Cryptography.AesCryptoServiceProvider
-	    [Byte[]] $AesKey = @(([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("MHg0ZSwweDk5LDB4MDYsMHhlOCwweGZjLDB4YjYsMHg2YywweGM5LDB4ZmEsMHhmNCwweDkzLDB4MTAsMHg2MiwweDBmLDB4ZmUsMHhlOCwweGY0LDB4OTYsMHhlOCwweDA2LDB4Y2MsMHgwNSwweDc5LDB4OTAsMHgyMCwweDliLDB4MDksMHhhNCwweDMzLDB4YjYsMHg2YywweDFi"))))
+	    [Byte[]] $AesKey = ([System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("MHg0ZSwweDk5LDB4MDYsMHhlOCwweGZjLDB4YjYsMHg2YywweGM5LDB4ZmEsMHhmNCwweDkzLDB4MTAsMHg2MiwweDBmLDB4ZmUsMHhlOCwweGY0LDB4OTYsMHhlOCwweDA2LDB4Y2MsMHgwNSwweDc5LDB4OTAsMHgyMCwweDliLDB4MDksMHhhNCwweDMzLDB4YjYsMHg2YywweDFi"))).Split(",")
             
             
             #Set IV to all nulls to prevent dynamic generation of IV value
