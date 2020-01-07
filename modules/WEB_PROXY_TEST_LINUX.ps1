@@ -39,6 +39,8 @@ $analysis_dict = @{}
 $blocked_sites = @()
 $aResults = @()
 
+#$agents = @('Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246',' ','Mozilla/5.0 (Windows NT 10.0; Microsoft Windows 10.0.15063; en-US) PowerShell/6.0.0')
+$agents = @('Dean Dorton Web Proxy Testing Tool v1.0 - Linux Edition')
 Write-Host "## WEB FILTER STRENGTH CONFIGURATION TESTER -- Importing File Containing Websites/Categories to be tested"
 #Import Websites CSV
 if (Test-Path variable:global:csv) {
@@ -60,6 +62,7 @@ Write-Host "## WEB FILTER STRENGTH CONFIGURATION TESTER -- Testing Websites Indi
 foreach($item in $csv) {
     
     #RESET VARIABLES
+    $user_agent = $agents | Get-Random
     $httptemp = ""
     $httptitle = ""
     $httpstemp = ""
@@ -76,8 +79,9 @@ foreach($item in $csv) {
     if ($ip -is [system.array]) {
         $ip = $ip[0]
     }
+    $web_time = Get-Date
     try {
-        $httptemp = invoke-webrequest -UserAgent "Web Filter Strength Test - Not Malware" -ErrorAction Ignore -UseBasicParsing -TimeoutSec 3 -Headers $h1  http://$website
+        $httptemp = invoke-webrequest -SkipCertificateCheck -UserAgent $user_agent -ErrorAction Ignore -UseBasicParsing -TimeoutSec 3 -Headers $h1  http://$website
         $httpcontent = $httptemp.Content -join [Environment]::NewLine
         $httparr = $httpcontent -Split "<title>"
         $temparr = $httparr[1] -Split "</title>"
@@ -91,7 +95,7 @@ foreach($item in $csv) {
 
     }
     try {
-        $httpstemp = invoke-webrequest  -UserAgent "Web Filter Strength Test - Not Malware" -UseBasicParsing -ErrorAction Ignore -TimeoutSec 3 -Headers $h1  https://$website
+        $httpstemp = invoke-webrequest  -SkipCertificateCheck -UserAgent $user_agent -UseBasicParsing -ErrorAction Ignore -TimeoutSec 3 -Headers $h1  https://$website
         $httpscontent = $httpstemp.Content -join [Environment]::NewLine
         $httpsarr = $httpscontent -Split "<title>"
         $temparr = $httpsarr[1] -Split "</title>"
@@ -124,9 +128,11 @@ foreach($item in $csv) {
     }
     $output = @{ 
         Site = $website
+	IP = $ip
+	TIME = $web_time
         StatusCode = $httptemp.StatusCode
-	    IP = $ip
-	    IPHash = $site_ip_hash
+	UserAgent = $user_agent
+	IPHash = $site_ip_hash
         Headers = $headers
         HTTPTitle = $httptitle
         HTTPBody = $httpbody
