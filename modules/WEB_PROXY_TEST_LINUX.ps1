@@ -72,7 +72,7 @@ foreach($item in $csv) {
     $site_ip_hash = ""
     #GET WEBSITE TO TEST
     $website = $item.site
-    Write-Host "## WEB FILTER STRENGTH CONFIGURATION TESTER -- CHECKING - $website"
+    Write-Host "## WEB FILTER STRENGTH CONFIGURATION TESTER - $(Get-Date) - CHECKING - $website"
     $category = $item.category
     #GET DNS RESOLUTION & HASH - Allows us to check for OPen DNS or Cisco Umbrella Blockages
     $ip = ([System.Net.Dns]::GetHostAddresses($website)).IPAddressToString
