@@ -143,11 +143,6 @@ function Get-Stuff {
     }
     
     try {
-        #ensure that machine is domain joined and script is running as a domain account
-        if ( ( ((Get-WmiObject Win32_ComputerSystem).partofdomain) -eq $False ) -or ( -not $Env:USERDNSDOMAIN ) ) {
-            throw 'Machine is not a domain member or User is not a member of the domain.'
-        }
-
         #discover potential files containing passwords ; not complaining in case of denied access to a directory
         Write-Verbose "Searching \\$Server\SYSVOL. This could take a while."
 	#Get unused drive letter for mapping drives
