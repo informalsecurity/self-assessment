@@ -4,7 +4,9 @@ function Get-Stuff {
     Param (
             [ValidateNotNullOrEmpty()]
             [String]
-            $Server = $Env:USERDNSDOMAIN
+            $Server = $Env:USERDNSDOMAIN,
+	    [String]
+            $cred = $null
     )
     
     #Some XML issues between versions
@@ -148,8 +150,18 @@ function Get-Stuff {
 
         #discover potential files containing passwords ; not complaining in case of denied access to a directory
         Write-Verbose "Searching \\$Server\SYSVOL. This could take a while."
-        $XMlFiles = Get-ChildItem -Path "\\$Server\SYSVOL" -Recurse -ErrorAction SilentlyContinue -Include 'Groups.xml','Services.xml','Scheduledtasks.xml','DataSources.xml','Printers.xml','Drives.xml'
-    
+	#Get unused drive letter for mapping drives
+        $drvlist=(Get-PSDrive -PSProvider filesystem).Name
+        Foreach ($drvletter in "DEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray()) {
+            If ($drvlist -notcontains $drvletter) {
+                $drv=$drvletter
+            }
+        }
+	New-PSDrive -Name $drv -Root "\\$Server\SYSVOL" -PSProvider "FileSystem" -Credential $cred | out-null
+	$tpath = $null
+        $tpath = $drv + ":"
+        $XMlFiles = Get-ChildItem -Path $tpath -Recurse -ErrorAction SilentlyContinue -Include 'Groups.xml','Services.xml','Scheduledtasks.xml','DataSources.xml','Printers.xml','Drives.xml'
+    	Get-PSDrive $drv | Remove-PSDrive
         if ( -not $XMlFiles ) {throw 'No preference files found.'}
 
         Write-Verbose "Found $($XMLFiles | Measure-Object | Select-Object -ExpandProperty Count) files that could contain passwords."
