@@ -6,7 +6,7 @@ function Get-Stuff {
             [String]
             $Server = $Env:USERDNSDOMAIN,
 	    [String]
-            $cred = $null
+            $creds
     )
     
     #Some XML issues between versions
