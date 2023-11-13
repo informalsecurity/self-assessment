@@ -1,0 +1,6 @@
+{
+	'to': 'EMAILADDRESSES',
+	'from': 'CHANGEME@gmail.com',
+	'app_pass': 'CHANGE ME',
+	'groups_to_monitor': 'Administrators,Domain Admins,Enterprise Admins,Schema Admins,DNSAdmins,Exchange Administrator,Account Operators,Server Operators,Server Operators,Cert Publishers'
+}
