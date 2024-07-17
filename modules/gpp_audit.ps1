@@ -11,6 +11,12 @@ function Get-Stuff {
     $username = $global:config.netbios_domain + "\" + $global:config.t0_user
     $password = ConvertTo-SecureString $global:config.t0_pass -AsPlainText -Force
     $t0_cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+    $username = $global:config.netbios_domain + "\" + $global:config.t1_user
+    $password = ConvertTo-SecureString $global:config.t1_pass -AsPlainText -Force
+    $t1_cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+    $username = $global:config.netbios_domain + "\" + $global:config.t2_user
+    $password = ConvertTo-SecureString $global:config.t2_pass -AsPlainText -Force
+    $t2_cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
     #Some XML issues between versions
     Set-StrictMode -Version 2
     
@@ -154,18 +160,36 @@ function Get-Stuff {
                 $drv=$drvletter
             }
         }
-	      New-PSDrive -Name $drv -Root "\\$Server\SYSVOL" -PSProvider "FileSystem" -Credential $t0_cred | out-null
-	      $tpath = $null
+	New-PSDrive -Name $drv -Root "\\$Server\SYSVOL" -PSProvider "FileSystem" -Credential $t0_cred | out-null
+	$tpath = $null
         $tpath = $drv + ":"
+	if ((test-path $tpath) -eq $false) {
+        	New-PSDrive -Name $drv -Root "\\$Server\SYSVOL" -PSProvider "FileSystem" -Credential $t1_cred | out-null
+	}
+ 	if ((test-path $tpath) -eq $false) {
+        	New-PSDrive -Name $drv -Root "\\$Server\SYSVOL" -PSProvider "FileSystem" -Credential $t2_cred | out-null
+	}
         if ((test-path $tpath) -eq $false) {
           New-PSDrive -Name $drv -Root "\\$fqdn\SYSVOL" -PSProvider "FileSystem" -Credential $t0_cred -Scope Global | out-null
         }
-        if ((test-path $tpath) -eq $false) {
+	if ((test-path $tpath) -eq $false) {
+          New-PSDrive -Name $drv -Root "\\$fqdn\SYSVOL" -PSProvider "FileSystem" -Credential $t1_cred -Scope Global | out-null
+        }
+	if ((test-path $tpath) -eq $false) {
+          New-PSDrive -Name $drv -Root "\\$fqdn\SYSVOL" -PSProvider "FileSystem" -Credential $t2_cred -Scope Global | out-null
+        }
+	if ((test-path $tpath) -eq $false) {
           $ComputerName = (Resolve-DnsName -Name $server | select NameHost).NameHost
           If ($ComputerName -like "*.*") {
             $ComputerName = ($computerName -Split "\.")[0]
           }
           New-PSDrive -Name $drv -Root "\\$ComputerName\SYSVOL" -PSProvider "FileSystem" -Credential $t0_cred  -Scope Global -Verbose | out-null
+	  	if ((test-path $tpath) -eq $false) {
+			New-PSDrive -Name $drv -Root "\\$ComputerName\SYSVOL" -PSProvider "FileSystem" -Credential $t2_cred  -Scope Global -Verbose | out-null
+    		}
+      		if ((test-path $tpath) -eq $false) {
+			New-PSDrive -Name $drv -Root "\\$ComputerName\SYSVOL" -PSProvider "FileSystem" -Credential $t1_cred  -Scope Global -Verbose | out-null
+    		}
         }
         if (test-path $tpath) {
           $XMlFiles = Get-ChildItem -Path $tpath -Recurse -ErrorAction SilentlyContinue -Include 'Groups.xml','Services.xml','Scheduledtasks.xml','DataSources.xml','Printers.xml','Drives.xml'
