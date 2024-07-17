@@ -152,7 +152,7 @@ function Get-Stuff {
                 $drv=$drvletter
             }
         }
-	New-PSDrive -Name $drv -Root "\\$Server\SYSVOL" -PSProvider "FileSystem" -Credential $cred | out-null
+	New-PSDrive -Name $drv -Root "\\$Server\SYSVOL" -PSProvider "FileSystem" -Credential $creds | out-null
 	$tpath = $null
         $tpath = $drv + ":"
         $XMlFiles = Get-ChildItem -Path $tpath -Recurse -ErrorAction SilentlyContinue -Include 'Groups.xml','Services.xml','Scheduledtasks.xml','DataSources.xml','Printers.xml','Drives.xml'
