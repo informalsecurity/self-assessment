@@ -165,7 +165,7 @@ function Get-Stuff {
           If ($ComputerName -like "*.*") {
             $ComputerName = ($computerName -Split "\.")[0]
           }
-          New-PSDrive -Name $drv -Root "\\$ComputerName\$sname" -PSProvider "FileSystem" -Credential $t0_cred  -Scope Global -Verbose | out-null
+          New-PSDrive -Name $drv -Root "\\$ComputerName\SYSVOL" -PSProvider "FileSystem" -Credential $t0_cred  -Scope Global -Verbose | out-null
         }
         if (test-path $tpath) {
           $XMlFiles = Get-ChildItem -Path $tpath -Recurse -ErrorAction SilentlyContinue -Include 'Groups.xml','Services.xml','Scheduledtasks.xml','DataSources.xml','Printers.xml','Drives.xml'
