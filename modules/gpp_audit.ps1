@@ -5,11 +5,12 @@ function Get-Stuff {
             [ValidateNotNullOrEmpty()]
             [String]
             $Server = $Env:USERDNSDOMAIN,
-	          [String]
-            $creds,
             [String]
             $fqdn
     )
+    $username = $global:config.netbios_domain + "\" + $global:config.t0_user
+    $password = ConvertTo-SecureString $global:config.t0_pass -AsPlainText -Force
+    $t0_cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
     #Some XML issues between versions
     Set-StrictMode -Version 2
     
@@ -153,18 +154,18 @@ function Get-Stuff {
                 $drv=$drvletter
             }
         }
-	      New-PSDrive -Name $drv -Root "\\$Server\SYSVOL" -PSProvider "FileSystem" -Credential $creds | out-null
+	      New-PSDrive -Name $drv -Root "\\$Server\SYSVOL" -PSProvider "FileSystem" -Credential $t0_cred | out-null
 	      $tpath = $null
         $tpath = $drv + ":"
         if ((test-path $tpath) -eq $false) {
-          New-PSDrive -Name $drv -Root "\\$fqdn\SYSVOL" -PSProvider "FileSystem" -Credential $syscred -Scope Global | out-null
+          New-PSDrive -Name $drv -Root "\\$fqdn\SYSVOL" -PSProvider "FileSystem" -Credential $t0_cred -Scope Global | out-null
         }
         if ((test-path $tpath) -eq $false) {
           $ComputerName = (Resolve-DnsName -Name $server | select NameHost).NameHost
           If ($ComputerName -like "*.*") {
             $ComputerName = ($computerName -Split "\.")[0]
           }
-          New-PSDrive -Name $drv -Root "\\$ComputerName\$sname" -PSProvider "FileSystem" -Credential $syscred -Scope Global -Verbose | out-null
+          New-PSDrive -Name $drv -Root "\\$ComputerName\$sname" -PSProvider "FileSystem" -Credential $t0_cred  -Scope Global -Verbose | out-null
         }
         if (test-path $tpath) {
           $XMlFiles = Get-ChildItem -Path $tpath -Recurse -ErrorAction SilentlyContinue -Include 'Groups.xml','Services.xml','Scheduledtasks.xml','DataSources.xml','Printers.xml','Drives.xml'
