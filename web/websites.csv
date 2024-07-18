@@ -1,5 +1,5 @@
 category,site
-ADS,ad.doubleclick.ne
+ADS,ad.doubleclick.me
 ADS,ade.googlesyndication.com
 ADS,tps10266.doubleverify.com
 ADS,ping.chartbeat.net
@@ -68,7 +68,6 @@ SOCIAL NETWORKING,qzone.qq.com
 SOCIAL NETWORKING,www.tumblr.com
 SOCIAL NETWORKING,www.snapchat.com
 EXFILTRATION,drive.google.com
-EXFILTRATION,azurewebsites.net
 EXFILTRATION,dropbox.com
 EXFILTRATION,mega.nz
 EXFILTRATION,pcloud.com
