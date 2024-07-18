@@ -1,16 +1,18 @@
 category,site
 ADS,ad.doubleclick.me
 ADS,ade.googlesyndication.com
-ADS,tps10266.doubleverify.com
+ADS,nycp-phlb119.doubleverify.com
 ADS,ping.chartbeat.net
 STREAMING MEDIA,hulu.com
 STREAMING MEDIA,tv.youtube.com
 STREAMING MEDIA,vue.playstation.com
+STREAMING MEDIA,netflix.com
 ANONYMIZERS,anonymouse.org
 ANONYMIZERS,www.vpnpro.com
-ANONYMIZERS,hideme.be
-ANONYMIZERS,www.anonymizer.com
+ANONYMIZERS,hide.me
+ANONYMIZERS,proxyium.com
 ANONYMIZERS,www.torproject.org
+ANONYMIZERS,www.kproxy.com
 VPN SERVICES,www.expressvpn.com
 VPN SERVICES,www.nordvpn.com
 VPN SERVICES,www.ipvanish.com
@@ -18,7 +20,7 @@ VPN SERVICES,bestvpn.org
 VPN SERVICES,www.hotspotshield.com
 FILE SHARING,jumpshare.com
 FILE SHARING,www.onehub.com
-FILE SHARING,megaupload.nz
+FILE SHARING,sharefile.com
 FILE SHARING,www.box.com
 FILE SHARING,www.dropbox.com
 FILE SHARING,mega.nz
@@ -28,7 +30,7 @@ GAMBLING,www.slotland.eu
 GAMBLING,MyBookie.ag
 GAMBLING,www.ignitioncasino.eu
 HACKING,exploit-db.com
-HACKING,www.elite-hackers.com
+HACKING,0x00sec.org
 HACKING,www.hackthissite.org
 HACKING,www.hellboundhackers.org
 HACKING,www.hackerone.com
@@ -55,162 +57,85 @@ SEARCH ENGINE,www.google.com
 SEARCH ENGINE,www.bing.com
 SEARCH ENGINE,www.yandex.ru
 SOCIAL NETWORKING,www.facebook.com
-SOCIAL NETWORKING,www.myspace.com
-SOCIAL NETWORKING,www.orkut.com
-SOCIAL NETWORKING,www.twitter.com
-STREAMING MEDIA,www.netflix.com
+SOCIAL NETWORKING,x.com
+SOCIAL NETWORKING,www.tiktok.com
+SOCIAL NETWORKING,www.instagram.com
 STREAMING MEDIA,www.pandora.com
 STREAMING MEDIA,www.vevo.com
 STREAMING MEDIA,www.youtube.com
-STREAMING MEDIA,www.sonycrackle.com
-SOCIAL NETWORKING,www.instagram.com
-SOCIAL NETWORKING,qzone.qq.com
 SOCIAL NETWORKING,www.tumblr.com
 SOCIAL NETWORKING,www.snapchat.com
 EXFILTRATION,drive.google.com
 EXFILTRATION,dropbox.com
 EXFILTRATION,mega.nz
 EXFILTRATION,pcloud.com
-EXFILTRATION,amazonaws.com
-EXFILTRATION,web.core.windows.net
-EXFILTRATION,blob.core.windows.net
 EXFILTRATION,box.com
-EXFILTRATION,bitbucket.org
-EXFILTRATION,firebasestorage.googleapis.com
-EXFILTRATION,storage.googleapis.com
-EXFILTRATION,herokuapp.com
-EXFILTRATION,cloudwaysapps.com
-EXFILTRATION,cloudapp.azure.com
-EXFILTRATION,cloudapp.net
 EXFILTRATION,filetransfer.io
 EXFILTRATION,sendspace.com
 EXFILTRATION,wetransfer.com
 EXFILTRATION,mediafire.com
 EXFILTRATION,workers.dev
 EXFILTRATION,pastebin.com
-EXFILTRATION,wordpress.com
 EXFILTRATION,backblazeb2.com
 EXFILTRATION,icloud.com
 EXFILTRATION,discord.com
 EXFILTRATION,api.telegram.org
 EXFILTRATION,gofile.io
-EXFILTRATION,siasky.net
 EXFILTRATION,digitaloceanspaces.com
-EXFILTRATION,appdomain.cloud
 EXFILTRATION,paste.ee
 EXFILTRATION,oraclecloud.com
 EXFILTRATION,ngrok.io
 EXFILTRATION,notion.so
-EXFILTRATION,attachment.outlook.live.net
-EXFILTRATION,attachments.office.net
 EXFILTRATION,wasabisys.com
 EXFILTRATION,inmotionhosting.com
-EXFILTRATION,000webhostapp.com
-EXFILTRATION,hostingerapp.com
 EXFILTRATION,ufile.io
-EXFILTRATION,onenoteonlinesync.onenote.com
-EXFILTRATION,repl.co
 EXFILTRATION,filebin.net
 EXFILTRATION,transfer.sh
-EXFILTRATION,trello.com
-EXFILTRATION,evernote.com
-EXFILTRATION,mybluehost.me
 EXFILTRATION,rentry.co
 EXFILTRATION,zerobin.net
 EXFILTRATION,textbin.net
 EXFILTRATION,ideone.com
 EXFILTRATION,pastebin.pl
 EXFILTRATION,www.uplooder.net
-EXFILTRATION,graph.microsoft.com
 EXFILTRATION,pastie.org
 EXFILTRATION,termbin.com
-EXFILTRATION,sprunge.us
-EXFILTRATION,plesk.page
-EXFILTRATION,anonfiles.com
-EXFILTRATION,linodeobjects.com
 EXFILTRATION,clbin.com
 EXFILTRATION,ix.io
-RMMTOOL,server.action1.com
+RMMTOOL,www.action1.com
 RMMTOOL,prod.addigy.com
-RMMTOOL,grtmprod.addigy.com
-RMMTOOL,agents.addigy.com
 RMMTOOL,aeroadmin.com
 RMMTOOL,alpemix.com
 RMMTOOL,teknopars.com
 RMMTOOL,ammyy.com
 RMMTOOL,anydesk.com
-RMMTOOL,api.playanext.com
-RMMTOOL,support.kastentornado.fi
 RMMTOOL,anyviewer.com
 RMMTOOL,anyviewer.cn
-RMMTOOL,aomeisoftware.com
 RMMTOOL,aomeikeji.com
 RMMTOOL,atera.com
-RMMTOOL,atera-agent-heartbeat
 RMMTOOL,aweray.com
-RMMTOOL,aweray.net
-RMMTOOL,awerayimg.com
-RMMTOOL,awesun.app
 RMMTOOL,barracudamsp.com
-RMMTOOL,autoupdate.mikogo4.com
-RMMTOOL,download.mikogo4.com
-RMMTOOL,webdb.mikogo4.com
-RMMTOOL,webdbmirror.mikogo4.com
-RMMTOOL,license.bomgar.com
-RMMTOOL,bomgarcloud.com
-RMMTOOL,beyondtrustcloud.com
-RMMTOOL,remotedesktop-pa.googleapis.com
-RMMTOOL,myconnectwise.com
-RMMTOOL,connectwise.com
-RMMTOOL,screenconnect.com
-RMMTOOL,itsupport247.net
-RMMTOOL,beanywhere.com
-RMMTOOL,licenseserver.solarwinds.com
-RMMTOOL,swi-rc.com
-RMMTOOL,swi-tc.com
+RMMTOOL,www.snapview.de
+RMMTOOL,screenconnect.connectwise.com
+RMMTOOL,rm.itsupport247.net
+RMMTOOL,comserver.corporate.beanywhere.com
 RMMTOOL,rmm.datto.com
-RMMTOOL,agent.centrastage.net
-RMMTOOL,audit.centrastage.net
-RMMTOOL,monitoring.centrastage.net
-RMMTOOL,agent-notifications.centrastage.net
-RMMTOOL,agent-comms.centrastage.net
-RMMTOOL,update.centrastage.net
-RMMTOOL,realtime.centrastage.net
-RMMTOOL,ts.centrastage.net
 RMMTOOL,nchuser.com
 RMMTOOL,distantdesktop.com
-RMMTOOL,signalserver.xyz
 RMMTOOL,dwservice.net
 RMMTOOL,fleetdeck.io
 RMMTOOL,getscreen.me
-RMMTOOL,getscreen.ru
-RMMTOOL,iperius.com
-RMMTOOL,iperius-r1.com
-RMMTOOL,iperius-r2.com
-RMMTOOL,iperius-r3.com
-RMMTOOL,iperius-r4.com
+RMMTOOL,pro32connect.ru
+RMMTOOL,www.iperiusremote.com
 RMMTOOL,iperiusremote.de
-RMMTOOL,entersrl.it
 RMMTOOL,islonline.net
-RMMTOOL,xmpp.itsm-us1.comodo.com
-RMMTOOL,xmpp.cmdm.comodo.com
-RMMTOOL,rmm-api.itsm-us1.comodo.com
-RMMTOOL,rmm-api.cmdm.comodo.com
 RMMTOOL,assist.jumpcloud.com
-RMMTOOL,api.jumpcloud.com
 RMMTOOL,kaseya.com
-RMMTOOL,stun.kaseya.com
 RMMTOOL,managedsupport.kaseya.net
-RMMTOOL,kaseya.net
-RMMTOOL,agents.level.io
 RMMTOOL,online.level.io
-RMMTOOL,builds.level.io
 RMMTOOL,downloads.level.io
 RMMTOOL,litemanager.ru
 RMMTOOL,litemanager.com
-RMMTOOL,update-cdn.logmein.com
 RMMTOOL,secure.logmein.com
-RMMTOOL,update.logmein.com
 RMMTOOL,logmeinrescue.com
 RMMTOOL,logmeinrescue.eu
 RMMTOOL,logmeinrescue-enterprise.com
@@ -219,56 +144,33 @@ RMMTOOL,remotelyanywhere.com
 RMMTOOL,gotoassist.com
 RMMTOOL,logmeininc.com
 RMMTOOL,logme.in
-RMMTOOL,getgo.com
 RMMTOOL,goto.com
-RMMTOOL,goto-rtc.com
 RMMTOOL,gotomypc.com
-RMMTOOL,logmeincdn.http.internapcdn.net
-RMMTOOL,logmein-gateway.com
 RMMTOOL,meshcentral.com
 RMMTOOL,mremoteng.org
-RMMTOOL,rm.mspbackups.com
-RMMTOOL,client.rmm.mspbackups.com
-RMMTOOL,settings.services.mspbackups.com
 RMMTOOL,connect.ra.msp360.com
 RMMTOOL,foris.cloudberrylab.com
-RMMTOOL,remote.management
-RMMTOOL,logicnow.com
-RMMTOOL,logicnow.us
 RMMTOOL,system-monitor.com
 RMMTOOL,systemmonitor.eu.com
 RMMTOOL,systemmonitor.co.uk
 RMMTOOL,systemmonitor.us
 RMMTOOL,n-able.com
-RMMTOOL,solarwindsmsp.com
-RMMTOOL,rmm-host.com
 RMMTOOL,activate.netsupportsoftware.com
-RMMTOOL,geo.netsupportsoftware.com
 RMMTOOL,ninjarmm.com
 RMMTOOL,opti-tune.com
 RMMTOOL,optitune.us
 RMMTOOL,panorama9.com
-RMMTOOL,kessel-ws.parsec.app
 RMMTOOL,kessel-api.parsec.app
-RMMTOOL,builds.parsec.app
-RMMTOOL,builds.parsecgaming.com
-RMMTOOL,public.parsec.app
-RMMTOOL,parsecusercontent.com
-RMMTOOL,stun.parsec.app
-RMMTOOL,stun6.parsec.app
 RMMTOOL,pcvisit.de
-RMMTOOL,cloudflare-pcvisit.com
 RMMTOOL,pdq.com
-RMMTOOL,pdq.tools
 RMMTOOL,pulseway.com
-RMMTOOL,activate.famatech.com
-RMMTOOL,radminte.com
-RMMTOOL,services.vnc.com
-RMMTOOL,update-check.realvnc.com
+RMMTOOL,famatech.com
+RMMTOOL,www.radmin.com
 RMMTOOL,remotepc.com
 RMMTOOL,rustdesk.com
 RMMTOOL,screenmeet.com
 RMMTOOL,server-eye.de
+RMMTOOL,www.servereye.de
 RMMTOOL,showmypc.com
 RMMTOOL,rmshelp.me
 RMMTOOL,splashtop.com
@@ -277,26 +179,15 @@ RMMTOOL,nanosystems.it
 RMMTOOL,supremocontrol.com
 RMMTOOL,syncromsp.com
 RMMTOOL,servably.com
-RMMTOOL,syncroapi.com
-RMMTOOL,atled.syspectr.com
-RMMTOOL,notify1.syspectr.com
-RMMTOOL,cdn.syspectr.com
-RMMTOOL,app.syspectr.com
-RMMTOOL,tm.syspectr.com
-RMMTOOL,console.syspectr.com
+RMMTOOL,www.syspectr.com
 RMMTOOL,icanhazip.tacticalrmm.io
 RMMTOOL,tacticalrmm.io
 RMMTOOL,teamviewer.com
 RMMTOOL,teamviewer.cn
 RMMTOOL,fixme.it
-RMMTOOL,techinline.net
 RMMTOOL,set.me
 RMMTOOL,tsplus-remotesupport.com
-RMMTOOL,secure-download-file.com
-RMMTOOL,licenseapi.dl-files.com
-RMMTOOL,securityapi.dl-files.com
 RMMTOOL,monitoring.tsplus.net
-RMMTOOL,ultraviewer.com
 RMMTOOL,xmreality.com
 RMMTOOL,assist.zoho.com
 RMMTOOL,assist.zoho.eu
@@ -304,15 +195,6 @@ RMMTOOL,assist.zoho.com.au
 RMMTOOL,assist.zoho.in
 RMMTOOL,assist.zoho.jp
 RMMTOOL,assist.zoho.uk
-RMMTOOL,assistlab.zoho.com
-RMMTOOL,downloads.zohocdn.com
-RMMTOOL,download-accl.zoho.in
 RMMTOOL,zohoassist.com
 RMMTOOL,zohopublic.com
 RMMTOOL,zohopublic.eu
-RMMTOOL,meeting.zoho.com
-RMMTOOL,meeting.zoho.eu
-RMMTOOL,static.zohocdn.com
-RMMTOOL,zohodl.com.cn
-RMMTOOL,zohowebstatic.com
-RMMTOOL,zohostatic.in
