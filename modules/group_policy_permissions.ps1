@@ -1021,11 +1021,7 @@ function Get-LogonScripts ($Server,$credential,$Domain) {
         $ExtensionList = '.bat|.vbs|.ps1|.cmd|.kix'
         $remotePath = "C:\Windows\sysvol\domain\"
         $sb = {
-            if (Test-Path "C:\Windows\SYSVOL_DFSR\domain\") {
-                $svpath = "C:\Windows\SYSVOL_DFSR\domain\"
-            } else {
-                 $svpath ="C:\Windows\sysvol\domain\"
-            }
+             $svpath = (Get-WmiObject -Class Win32_Share | Where-Object Name -eq "SYSVOL").Path
              Get-ChildItem -Path $svpath -Recurse -Depth 25| Where-Object {$_.Extension -match '.bat|.vbs|.ps1|.cmd|.kix'}
         }
         $LogonScripts = Invoke-Command -ComputerName $Server -Credential $credential -ScriptBlock $sb 
@@ -1045,11 +1041,7 @@ function Get-GPOLogonScripts ($Server,$credential,$Domain){
     $Domains+=$Domain
     $GPOLogonScripts = @()
     $sb = {
-        if (Test-Path "C:\Windows\SYSVOL_DFSR\domain\") {
-            $svpath = "C:\Windows\SYSVOL_DFSR\domain\"
-        } else {
-            $svpath = "C:\Windows\sysvol\domain\"
-        }
+        $svpath = (Get-WmiObject -Class Win32_Share | Where-Object Name -eq "SYSVOL").Path
         $svpath
     }
     $svpath = Invoke-Command -ComputerName $Server -Credential $credential -ScriptBlock $sb 
