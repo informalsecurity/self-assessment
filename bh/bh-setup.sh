@@ -139,6 +139,16 @@ bhe_enable_cypher_mutations=false
 bhe_graph_query_memory_limit=2
 bhe_recreate_default_admin=false
 GRAPH_DRIVER=neo4j
+
+# Neo4j Memory Configuration (add these lines)
+NEO4J_dbms_memory_heap_initial__size=2G
+NEO4J_dbms_memory_heap_max__size=4G
+NEO4J_dbms_memory_pagecache_size=1G
+
+# Query memory limits
+NEO4J_dbms_memory_transaction_total_max=2G
+NEO4J_dbms_memory_transaction_max_size=512M
+
 EOF
 
 # Modify docker-compose.yml to expose services externally
