@@ -1,0 +1,950 @@
+{
+  "External Security": {
+    "controls": {
+      "EXT001001": {
+        "description": "Vulnerabilities are discovered at an average of over 30/day.  Internet facing assets are at a much higher risk of being exploited - as they can be directly accessed by threat actors. Regular vulnerability scanning should be conducted to help identify vulnerabilities before a threat actor is able to.",
+        "remediation": "Implement comprehensive vulnerability discovery scanning and assessment procedures that performs scanning on a regular basis",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf",
+          "https://www.cisecurity.org/controls/v8"
+        ]
+      },
+      "EXT001002": {
+        "description": "Once vulnerabilities are discovered - they need to be resolved in a timely manner.  Vulnerabilities were discovered that had not been patched during the review. Vulnerability remediation processes need to be implemented or improved.",
+        "remediation": "Establish vulnerability remediation procedures with defined timelines and tracking.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf",
+          "https://www.cisecurity.org/controls/v8"
+        ]
+      },
+      "EXT002001": {
+        "description": "Organizations should strive to minimize their external attack surface to only ports, services, and software required for business purposes.  Anything not required unneccessarily increases attack surface and adds complexity to monitoring and patching required on an attack surface directly accessible to threat actors.",
+        "remediation": "Disable unnecessary services on external-facing systems to minimize attack surface.",
+        "references": [
+          "https://www.cisecurity.org/cis-benchmarks/",
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+        ]
+      },
+      "EXT002002": {
+        "description": "Unnecessary web content is exposed and should be disabled.",
+        "remediation": "Disable unnecessary web content on external-facing systems.",
+        "references": [
+          "https://www.cisecurity.org/cis-benchmarks/",
+          "https://owasp.org/www-project-top-ten/"
+        ]
+      },
+      "EXT003001": {
+        "description": "Multi-factor authentication is not implemented on external systems. Multi-factor authentication is a critical control to help prevent use of breached credentials.",
+        "remediation": "Implement multi-factor authentication for all external-facing authentication interfaces.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf",
+          "https://www.cisecurity.org/controls/v8"
+        ]
+      },
+      "EXT003002": {
+        "description": "Authentication mechanisms do not properly utilize encryption.  Trasmitting sensitive credentials over plain text connections on untrusted networks can risk exposure.",
+        "remediation": "Ensure all authentication processes utilize strong encryption protocols.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf",
+          "https://owasp.org/www-project-authentication-cheat-sheet/"
+        ]
+      },
+      "EXT003003": {
+        "description": "Strong multi-factor authentication mechanisms are not utilized.  Phishing-resistant MFA prevents attackers from stealing and reusing your authentication codes, even if they trick you into entering them on fake websites. Unlike SMS or app-based codes that can be intercepted or phished, methods like hardware keys create a cryptographic link that only works with the legitimate site, making account takeovers much harder.",
+        "remediation": "Organizations should immediately disable SMS codes, email-based verification, voice calls, and TOTP authenticator apps for all critical systems, as these methods remain vulnerable to interception and phishing attacks. Instead, mandate hardware security keys like YubiKey or Google Titan, along with platform-based authenticators such as Windows Hello, Touch ID, or Face ID that use FIDO2/WebAuthn protocols. The security gap between traditional and phishing-resistant MFA is too significant to justify offering multiple options. When users can choose between convenience and security, they typically select the weaker method, undermining your entire security posture. A complete phase-out of legacy MFA methods ensures consistent protection across your organization and eliminates the weakest links in your authentication chain.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf",
+          "https://www.cisecurity.org/controls/v8"
+        ]
+      },
+      "EXT004001": {
+        "description": "Reputation analysis findings require investigation. IP's or Domains provided were found on threat intel lists - indicating possible comrpomise",
+        "remediation": "Investigate reputation analysis findings and implement appropriate remediation measures.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf",
+		  "https://www.spamhaus.org/domain-reputation/",
+		  "https://osint.sh/"
+        ]
+      }
+    }
+  },
+  "Endpoint Security": {
+    "controls": {
+      "ESR001001": {
+        "description": "Missing antivirus protection leaves systems vulnerable to malware infections that can steal sensitive data, encrypt files for ransom, or provide attackers with remote access to your network. Without real-time scanning and threat detection, malicious files can execute undetected, potentially spreading laterally across your organization and causing significant operational disruption and financial damage. Modern threats move quickly, making continuous protection essential rather than optional.",
+        "remediation": "Immediately install approved antivirus solutions on all unprotected endpoints and establish automated monitoring to detect any systems missing AV protection. Implement a monthly audit process that verifies AV deployment status, confirms active real-time scanning, and ensures signature updates are current across all devices. Create alerting for any endpoint that becomes unprotected and require immediate remediation within 24 hours to prevent exposure windows that attackers can exploit.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+        ]
+      },
+      "ESR001002": {
+        "description": "EDR (Endpoint Detection and Response) is critical because it provides real-time visibility into endpoint activity and can detect sophisticated threats that bypass traditional antivirus. Unlike signature-based protection, EDR monitors behavioral patterns and can identify advanced persistent threats, living-off-the-land attacks, and zero-day exploits. It enables rapid incident response by providing detailed forensic data about attack progression, allowing security teams to contain breaches quickly and understand the full scope of compromise before significant damage occurs.",
+        "remediation": "Implement EDR solutions on all servers, workstations, and mobile devices to gain comprehensive visibility into potential threats that traditional antivirus cannot detect. Establish 24/7 monitoring of EDR alerts with trained analysts who can respond to incidents within one hour of detection. Ensure EDR data retention meets your investigation needs and integrate alerts with your security operations center to enable rapid containment of advanced threats before they can spread or exfiltrate sensitive data.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+        ]
+      },
+      "ESR001003": {
+        "description": "Outdated antivirus software detected.",
+        "remediation": "Update outdated antivirus software to current versions.  Establish a formal auditing process to regularly check for outdated AV.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+		  "https://www.quickheal.co.in/knowledge-centre/antivirus-updates-essential-device-security"
+        ]
+      },
+      "ESR001004": {
+        "description": "Tamper protection prevents attackers from disabling or bypassing security controls once they gain initial access to a system. Without tamper protection, malware can easily turn off antivirus, EDR, or other defensive tools, leaving systems completely vulnerable. This protection ensures that even if attackers compromise user credentials or exploit vulnerabilities, they cannot silently disable the security mechanisms designed to detect and block their activities, maintaining your defensive posture throughout an attack.",
+        "remediation": "Enable tamper protection on all endpoint security solutions.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+		  "https://learn.microsoft.com/en-us/defender-endpoint/prevent-changes-to-security-settings-with-tamper-protection"
+        ]
+      },
+      "ESR001005": {
+        "description": "EDR logs are not retained for at least 30 days.",
+        "remediation": "Ensure EDR logs are retained for at least 30 days for investigation purposes.",
+        "references": [
+          "https://csrc.nist.gov/publications/detail/sp/800-92/final",
+          "https://www.cisecurity.org/controls/v8"
+        ]
+      },
+      "ESR001006": {
+        "description": "EDR management interfaces control your organization's primary threat detection and response capabilities, making them high-value targets for attackers. Without MFA protection, a compromised administrator password grants attackers the ability to disable monitoring, delete forensic evidence, whitelist malicious files, and blind your security team to ongoing breaches. Securing these interfaces with MFA ensures that even if credentials are stolen, attackers cannot neutralize your most critical security controls and operate undetected within your environment.",
+        "remediation": "Ensure EDR management interfaces require multi-factor authentication.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf",
+		  "https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-old-require-mfa-admin"
+        ]
+      },
+      "ESR002001": {
+        "description": "Operating system hardening pass/fail percentage below acceptable threshold (55%). OS hardening using standards like CIS Top 20 or Microsoft Security Baselines systematically removes unnecessary services, closes unused ports, and applies security configurations that significantly reduce your attack surface. These vetted standards address common vulnerabilities and misconfigurations that attackers routinely exploit for initial access and privilege escalation. Without proper hardening, default OS installations contain numerous security gaps that make successful attacks much easier and more likely.",
+        "remediation": "Deploy CIS Level 1 benchmarks or Microsoft Security Baselines across all Windows, Linux, and macOS systems within 90 days. Prioritize critical controls including disabling unnecessary services, enabling Windows Defender Application Control, configuring secure boot settings, implementing local firewall rules, and removing default accounts. Use automated tools like Microsoft Security Compliance Toolkit, CIS-CAT Pro, or Ansible playbooks to ensure consistent application and ongoing compliance monitoring. Establish quarterly compliance scans to detect configuration drift and remediate deviations within 48 hours.",
+        "references": [
+          "https://www.cisecurity.org/cis-benchmarks/",
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf",
+		  "CIS Controls and Benchmarks: https://www.cisecurity.org/cis-controls",
+		  "Microsoft Security Baselines: https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-security-configuration-framework/windows-security-baselines", 
+		  "Microsoft Security Compliance Toolkit: https://www.microsoft.com/en-us/download/details.aspx?id=55319",
+		  "CIS-CAT Pro Dashboard: https://www.cisecurity.org/cybersecurity-tools/cis-cat-pro"
+        ]
+      },
+      "ESR003001": {
+        "description": "Full disk encryption was not observed deployed to all laptops.  Full disk encryption protects sensitive data on laptops from unauthorized access if devices are lost, stolen, or physically compromised. Without encryption, anyone can remove the hard drive, connect it to another system, and access all stored files, bypassing operating system security controls entirely. This protection is essential for mobile devices that frequently leave secure environments and contain business-critical information, intellectual property, and personal data that could cause significant harm if exposed.",
+        "remediation": "Enable BitLocker on Windows laptops and FileVault on macOS devices immediately, with encryption keys managed through your centralized key management system or Active Directory. Require pre-boot authentication and ensure recovery keys are securely stored and accessible to IT support. Implement automated compliance monitoring to verify encryption status across all mobile devices and block network access for any unencrypted laptop until remediation is complete.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+          "https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/"
+        ]
+      },
+      "ESR003002": {
+        "description": "Missing patch management agent on endpoints.  Patch management agents are used to deploy OS and third-party pathes - if missing, system may go unpatched and unmonitored resulting in increased risk.",
+        "remediation": "Install missing patch management agents on all endpoints.  Develop a process to regularly audit systems for agents and ensure a robust rollout process for new systems.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+        ]
+      },
+      "ESR003003": {
+        "description": "Macros from internet sources are not disabled.  Macros in Office documents are often used as a initial access vector to deploy malware.",
+        "remediation": "Disable macros from internet sources to prevent malicious code execution unless it is required for business purposes.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+          "https://attack.mitre.org/"
+        ]
+      },
+      "ESR003004": {
+        "description": "Mobile devices operating off the corporate domain lack the protection of enterprise network firewalls and perimeter security controls, making them vulnerable to direct attacks from malicious actors on public networks. Without a local firewall, these devices can be exploited through open ports, unsecured services, or network-based attacks when connected to untrusted Wi-Fi networks or cellular connections. Host-based firewalls provide essential network-level protection by controlling inbound and outbound traffic directly on the device, maintaining security boundaries even when traditional network defenses are unavailable.",
+        "remediation": "Enable and configure built-in firewalls on all laptops, tablets, and smartphones that operate outside the corporate network, including Windows Defender Firewall, macOS Application Firewall, and mobile device firewall capabilities. Establish standardized firewall policies that block unnecessary inbound connections, restrict outbound traffic to approved applications, and log connection attempts for security monitoring. Ensure firewall configurations are centrally managed through MDM solutions and cannot be disabled by end users, with automatic policy enforcement regardless of network location or connection type.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+		  "https://support.microsoft.com/en-us/windows/firewall-and-network-protection-in-the-windows-security-app-ec0844f7-aebd-0583-67fe-601ecf5d774f"
+        ]
+      },
+      "ESR003005": {
+        "description": "Content filtering agents on mobile devices prevent users from accessing malicious websites, phishing sites, and command-and-control servers even when working outside the corporate network. Mobile devices often bypass traditional network security controls when using cellular data or untrusted Wi-Fi, making endpoint-based filtering critical for maintaining protection. These agents also enforce acceptable use policies and can block malware downloads, reducing the risk of device compromise that could later spread when users reconnect to corporate networks.",
+        "remediation": "Deploy missing content filtering agents to endpoints.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+		  "NIST Special Publication 800-124 Rev. 2 - Guidelines for Managing the Security of Mobile Devices in the Enterprise: https://csrc.nist.gov/pubs/sp/800/124/r2/final",
+		  "NIST Special Publication 1800-4B - Mobile Device Security: https://www.nccoe.nist.gov/publication/1800-4/VolB/",
+		  "Microsoft Defender for Endpoint Web Content Filtering Documentation: https://learn.microsoft.com/en-us/defender-endpoint/web-content-filtering",
+		  "https://www.jamf.com/blog/on-device-content-filtering/"
+        ]
+      },
+      "ESR004001": {
+        "description": "Internal vulnerability discovery identifies security weaknesses in your systems before malicious actors can exploit them, providing critical time to patch or mitigate risks. Many vulnerabilities remain undetected until actively scanned for, and attackers often target these unknown flaws to gain initial access or escalate privileges within networks. Regular internal vulnerability assessments reveal misconfigurations, outdated software, and security gaps that external threat intelligence may not cover, allowing organizations to proactively strengthen their defenses rather than reactively respond to breaches.",
+        "remediation": "Deploy automated vulnerability scanners to perform weekly unauthenticated scans and monthly authenticated scans across all internal network segments, servers, workstations, and network devices. Authenticated scanning is critical because it provides deeper visibility into system configurations, installed software versions, missing patches, and security settings that are invisible to external scans. Establish vulnerability remediation SLAs based on severity levels, with critical vulnerabilities requiring patching within 72 hours and high-severity issues within 14 days. Integrate scan results with your patch management system and track remediation progress through centralized dashboards to ensure continuous security improvement.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf",
+          "https://www.cisecurity.org/controls/v8"
+        ]
+      }
+    }
+  },
+  "Account Security": {
+    "controls": {
+      "ACC001001": {
+        "description": "Tiered access in Active Directory prevents privilege escalation attacks by creating administrative boundaries that limit the scope of compromised credentials. Without proper tiering, attackers who compromise lower-privileged accounts can potentially escalate to domain administrator privileges through lateral movement and credential theft. The tiered model uses separate administrative groups at Tier 0 (domain controllers, certificate authorities), Tier 1 (servers and services), and Tier 2 (workstations and user devices) with restricted logon rights and dedicated administrative accounts for each tier. This creates soft security boundaries that contain breaches within specific infrastructure layers, preventing attackers from moving from compromised workstations to critical domain infrastructure.",
+        "remediation": "Establish three distinct administrative tiers with separate security groups and accounts for each level. Create Tier 0 groups for domain controllers and certificate authorities with highly privileged accounts that never log into lower tiers. Deploy Tier 1 groups for server administration with accounts restricted from accessing workstations. Implement Tier 2 groups for workstation and user support with no server access permissions. ",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/securing-privileged-access/",
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+        ]
+      },
+      "ACC001002": {
+        "description": "The logon restriction blocks are the enforcement mechanism that makes tiered administration effective by preventing credential exposure across tier boundaries. Without these blocks, administrators might inadvertently log into lower-tier systems with higher-privileged accounts, exposing those credentials to potential theft through memory dumps, cached credentials, or malware on compromised systems. Group Policy logon restrictions (such as 'Deny logon locally' and 'Deny logon as a service') create technical barriers that prevent Tier 0 accounts from authenticating to Tier 1 or Tier 2 systems, ensuring that even if administrators make mistakes or attackers attempt lateral movement, the security boundaries remain intact and prevent privilege escalation paths.",
+        "remediation": "Configure Group Policy to enforce logon restrictions preventing cross-tier authentication, deploy Privileged Access Workstations for Tier 0 and Tier 1 administrators, and establish separate administrative forests or domains for the highest privilege operations to ensure complete isolation of critical infrastructure management.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/securing-privileged-access/",
+		  "https://learn.microsoft.com/en-us/microsoft-identity-manager/pam/tier-model-for-partitioning-administrative-privileges"
+        ]
+      },
+      "ACC001003": {
+        "description": "Admins were observed sharing passwords across tiers. Shared passwords across tiered accounts eliminate the security boundaries that tiered administration is designed to create, essentially making all tiers equivalent in terms of compromise risk. If an attacker obtains a shared password from a lower-tier system, they immediately gain access to higher-tier accounts and can bypass all privilege escalation protections. Password reuse also means that credential theft from any single compromised system instantly compromises multiple administrative tiers, allowing attackers to move directly from workstation-level access to domain controller privileges without needing to escalate through intermediate steps.",
+        "remediation": "Ensure admins do not share passwords across different administrative tiers.  This can be accomplished through 1) regular audits, and 2) awareness training",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/securing-privileged-access/",
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf"
+        ]
+      },
+      "ACC002001": {
+        "description": "Users performing daily activities with local admin rights dramatically increases the attack surface by allowing any malware, phishing attack, or social engineering exploit to execute with elevated privileges. When users browse the web, open email attachments, or run applications with administrative rights, malicious code can immediately install persistent malware, modify system configurations, disable security controls, or access sensitive data without additional privilege escalation. This eliminates the security benefits of least privilege access and makes successful attacks more likely and more damaging, as attackers gain full system control from the initial compromise rather than needing to exploit additional vulnerabilities to escalate privileges.",
+        "remediation": "Restrict admin rights for everyday use, implement separate accounts for administrative tasks. Implement Application Control policies to pre-approve commonly used software installations and deploy a software catalog through tools like Microsoft System Center or third-party solutions for user self-service installations. Establish a tiered support model where standard users can request elevated privileges for specific tasks through temporary admin tools like Microsoft LAPS or BeyondTrust PowerBroker, with automatic expiration after defined periods. Roll out changes in phases by department, starting with low-risk groups, and provide clear communication about alternative processes for software installation and system changes. Deploy endpoint management tools that allow remote software deployment and configuration changes to minimize user disruption while maintaining security boundaries.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+        ]
+      },
+      "ACC002002": {
+        "description": "Domain Users group not removed from local admins.  Adding Domain Users to the local administrators group grants every user account in the domain full administrative privileges on workstations, effectively eliminating any privilege separation and creating massive security exposure. This configuration means that any compromised user account immediately has local admin rights, allowing attackers to install malware, disable security controls, access other users' data, and use the compromised system as a launching point for lateral movement. It also enables any user to intentionally or accidentally make system changes that could destabilize workstations, bypass security policies, or access sensitive information stored locally on any machine they use.",
+        "remediation": "Remove Domain Users group from local administrators groups on all systems.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/",
+          "https://www.cisecurity.org/benchmark/microsoft_windows"
+        ]
+      },
+      "ACC003001": {
+        "description": "Dormant Active Directory accounts represent unnecessary attack surface because they retain their original permissions and group memberships while remaining unmonitored and unmanaged. Attackers often target these abandoned accounts since they're less likely to be noticed during compromise, and password policies may not apply consistently to unused accounts. Dormant accounts can provide attackers with legitimate credentials for initial access or lateral movement, especially if they belonged to former employees with elevated privileges or service accounts with broad system access. These accounts also complicate security auditing and compliance efforts since their activity patterns are unpredictable and access rights may be outdated or excessive.",
+        "remediation": "Disable or remove dormant Active Directory accounts following established procedures.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/",
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+        ]
+      },
+      "ACC004001": {
+        "description": "Network shares with writable executable content accessible to large user groups create significant attack vectors for malware propagation and privilege escalation. Attackers can replace legitimate executables with malicious versions, inject code into scripts, or plant backdoors that execute when other users access the shared content. When users run these compromised executables with their own privileges, malware can spread laterally across the network without requiring additional exploitation. This configuration also enables attackers to escalate privileges if shared executables are run by higher-privileged accounts or scheduled tasks, turning a single compromised user account into organization-wide infection through trusted execution paths.",
+        "remediation": "Review and remediate writable lateral risk files on network shares.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf",
+		  "https://cybernews.com/security/server-message-block-share-attacks-explained/"
+        ]
+      },
+      "ACC004002": {
+        "description": "Network shares containing readable credential files, certificates, private keys, or configuration data accessible to large user groups provide attackers with immediate lateral movement opportunities without requiring privilege escalation. Attackers can harvest service account passwords, certificate private keys, database connection strings, API keys, and other sensitive authentication material directly from file shares after compromising any user account with read access. This cached credential exposure allows attackers to authenticate to additional systems, escalate privileges through service accounts, or access external resources using stolen certificates and keys. The broad access permissions mean that a single compromised user account can quickly lead to organization-wide compromise through passive credential harvesting rather than active exploitation.",
+        "remediation": "Review and remediate readable lateral risk files on network shares.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf",
+		  "https://cybernews.com/security/server-message-block-share-attacks-explained/"
+        ]
+      },
+      "ACC004003": {
+        "description": "Writable backup and recovery files accessible to large user groups enable attackers to corrupt or replace critical system backups, eliminating recovery options during ransomware attacks or system failures. Attackers can modify backup scripts to include malicious code that executes during restoration processes, inject backdoors into backup data, or delete backup files entirely to maximize damage from destructive attacks. Compromised backup files also provide attackers with historical copies of sensitive data, password hashes, and system configurations that may contain exploitable vulnerabilities or credentials. When organizations attempt recovery from these tainted backups, they unknowingly restore compromised systems and malicious code, perpetuating the attack cycle and making complete remediation nearly impossible.",
+        "remediation": "Review and remediate writable recovery risk files.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf",
+		  "https://cybernews.com/security/server-message-block-share-attacks-explained/"
+        ]
+      },
+      "ACC004004": {
+        "description": "Administrative shares like C$ accessible to large user groups provide attackers with complete file system access to remote systems, enabling them to read sensitive files, plant malware, modify system configurations, and extract credentials from anywhere on the target machine. Attackers can access registry hives, memory dumps, browser saved passwords, application data, and system logs that contain authentication tokens and sensitive information. This level of access also allows attackers to deploy persistence mechanisms directly into system directories, modify startup scripts, or replace legitimate executables with malicious versions that execute with system privileges. Administrative share access essentially grants attackers the equivalent of local administrator privileges on remote systems without requiring additional exploitation or privilege escalation.",
+        "remediation": "Remove inappropriate full hard drive shares and implement proper file sharing policies.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+		  "https://cybernews.com/security/server-message-block-share-attacks-explained/"
+        ]
+      },
+      "ACC005001": {
+        "description": "Non-existent shares referenced in Group Policy scripts create authentication opportunities for attackers who can register those share names and capture credential hashes when domain computers attempt to connect. When systems try to access the missing share, they send NTLM authentication requests that attackers can intercept using tools like Responder or by creating rogue SMB servers with matching share names. This allows attackers to collect Net-NTLMv2 hashes from computer accounts or users, which can then be cracked offline or used in relay attacks to authenticate to other systems. The failed connection attempts also provide attackers with information about internal network topology and may expose service account credentials if the scripts run under elevated privileges.",
+        "remediation": "Remove references to non-existent shares from Group Policy scripts.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/",
+		  "https://offsec.blog/hidden-menace-how-to-identify-misconfigured-and-dangerous-logon-scripts/"
+        ]
+      },
+      "ACC005002": {
+        "description": "Exploitable logon scripts detected.",
+        "remediation": "Review and secure exploitable logon scripts to prevent privilege escalation.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/",
+		  "https://offsec.blog/hidden-menace-how-to-identify-misconfigured-and-dangerous-logon-scripts/"
+        ]
+      },
+      "ACC005003": {
+        "description": "Exposed credentials detected in Group Policy scripts.",
+        "remediation": "Remove exposed credentials from Group Policy scripts and implement secure credential management.  Rotate any exposed passwords.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/",
+		  "https://learn.microsoft.com/en-us/defender-for-identity/reversible-passwords-group-policy"
+        ]
+      }
+    }
+  },
+  "Password Security": {
+    "controls": {
+      "PASS001001": {
+        "description": "Exposed Group Policy Preferences credentials detected.",
+        "remediation": "Remove exposed GPP credentials and implement secure credential management. Rotate any exposed passwords.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/",
+          "https://attack.mitre.org/techniques/T1552/006/"
+        ]
+      },
+      "PASS002001": {
+        "description": "Local administrator accounts with identical passwords across multiple systems create a single point of failure that enables attackers to move laterally throughout the network after compromising just one machine. When local admin passwords are shared, an attacker who gains access to password hashes or plaintext credentials from one system can immediately authenticate as administrator on every other system using the same password. This eliminates the containment benefits of network segmentation and allows rapid privilege escalation across the entire infrastructure. Unique local admin passwords ensure that compromising one system doesn't automatically grant administrative access to others, significantly limiting the blast radius of successful attacks and forcing attackers to exploit additional vulnerabilities for each system they want to compromise.",
+        "remediation": "Deploy local password management solution for administrative accounts.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+		  "https://learn.microsoft.com/en-us/windows-server/identity/laps/laps-overview"
+        ]
+      },
+      "PASS002002": {
+        "description": "Missing local password management agent. Systems with missing local password manager agents are at a higher risk of sharing credentials which can be abused for lateral movement.",
+        "remediation": "Install missing local password management agent on systems.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+		  "https://learn.microsoft.com/en-us/windows-server/identity/laps/laps-overview"
+        ]
+      },
+      "PASS003001": {
+        "description": "Minimum password length for standard users below recommended standards. Password length is the most critical factor in password strength because it exponentially increases the computational effort required for brute force and dictionary attacks. Each additional character dramatically expands the possible password combinations, making attacks significantly more time-consuming and resource-intensive for attackers. Longer passwords provide better protection against modern attack techniques including GPU-based cracking, cloud-based password attacks, and advanced persistent threats that may have extended time to crack stolen password hashes. Length also compensates for other password weaknesses, as a 15-character password with common words is often more secure than an 8-character password with complex symbols, making it both more user-friendly and more resistant to compromise.",
+        "remediation": "Increase minimum password length standard for regular user accounts to at least 9 characters.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf",
+		  "https://learn.microsoft.com/en-us/microsoft-365/admin/misc/password-policy-recommendations?view=o365-worldwide",
+		  "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/06/Microsoft_Password_Guidance-1.pdf"
+        ]
+      },
+      "PASS003002": {
+        "description": "Minimum password length for admin users below recommended standards. Password length is the most critical factor in password strength because it exponentially increases the computational effort required for brute force and dictionary attacks. Each additional character dramatically expands the possible password combinations, making attacks significantly more time-consuming and resource-intensive for attackers. Longer passwords provide better protection against modern attack techniques including GPU-based cracking, cloud-based password attacks, and advanced persistent threats that may have extended time to crack stolen password hashes. Length also compensates for other password weaknesses, as a 15-character password with common words is often more secure than an 8-character password with complex symbols, making it both more user-friendly and more resistant to compromise.",
+        "remediation": "Increase minimum password length standard for administrative accounts to at least 12 characters.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf",
+		  "https://learn.microsoft.com/en-us/microsoft-365/admin/misc/password-policy-recommendations?view=o365-worldwide",
+		  "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/06/Microsoft_Password_Guidance-1.pdf"
+        ]
+      },
+      "PASS003003": {
+        "description": "Frequent password changes negatively impact security because users tend to make predictable, incremental changes to existing passwords rather than creating entirely new ones, often simply appending numbers or characters to previous passwords. When users know they'll need to change passwords frequently, they tend to choose weaker initial passwords, and when changes occur, they apply common transformations that attackers can easily predict. This creates patterns like 'Summer2021, Fall2021, Spring2021' that provide a false sense of security since attackers can apply the same transformations if any previous password has been compromised Why Periodic Password Changes are Not Recommended by NIST. Research shows that most password-based attacks stem from weak passwords, credential reuse, or technical compromises like phishing rather than password age, making frequent changes counterproductive to security.",
+        "remediation": "Reduce password change frequency to balance security and usability.  Frequency should be reduced to only when a suspected breach has occurred (following NIST/Microsoft guidance), or at least annually",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf",
+		  "NIST SP 800-63 Digital Identity Guidelines FAQ: https://pages.nist.gov/800-63-FAQ/",
+		  "Carnegie Mellon University Password Research: https://www.strongdm.com/blog/nist-password-guidelines"
+        ]
+      },
+      "PASS003004": {
+        "description": "Password filters prevent users from selecting weak, commonly used, or previously compromised passwords by automatically blocking them during password creation or changes. These filters check new passwords against databases of known breached credentials, dictionary words, and predictable patterns that attackers commonly exploit in password attacks. By proactively blocking vulnerable passwords at the point of creation, organizations can significantly reduce the risk of successful brute force, dictionary, and credential stuffing attacks while ensuring users create genuinely strong passwords rather than relying on complex but predictable patterns that meet traditional composition rules.",
+        "remediation": "Implement password filtering solutions like Microsoft Azure AD Password Protection or third-party tools that automatically block passwords against comprehensive databases of compromised credentials, common dictionary words, and organization-specific terms. Configure filters to reject passwords containing company names, common patterns, keyboard walks, and any credentials found in breach databases, with real-time updates to stay current with newly discovered compromises. Integrate filtering into all password change processes including self-service resets, administrative changes, and new account creation, ensuring consistent enforcement across Active Directory, cloud services, and applications while providing clear feedback to users when passwords are rejected.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/password-policy"
+        ]
+      },
+      "PASS004001": {
+        "description": "Shared passwords detected during audit. Shared passwords create significant lateral movement and privilege escalation opportunities for attackers who only need to compromise one user to gain access to multiple accounts and systems. When credentials are shared across users or services, attackers can pivot between different privilege levels and system access without needing to exploit additional vulnerabilities or steal separate credentials. Shared passwords also eliminate the ability to implement least privilege access, as multiple users often share accounts with excessive permissions to accommodate everyone's needs. This means a single compromised shared credential can provide attackers with broader system access than intended, enabling them to escalate privileges and move laterally across the network using legitimate authentication rather than requiring additional exploitation techniques.",
+        "remediation": "Change shared passwords and implement individual account policies. Require unique individual accounts for every user and service, with dedicated credentials that cannot be shared or reused across systems. Deploy privileged access management (PAM) solutions to provide just-in-time access to shared resources without revealing underlying passwords, and implement service accounts with managed identities or certificate-based authentication for automated processes. Establish policies prohibiting password sharing with disciplinary consequences, regularly audit for shared accounts that should be decomissioned, and use role-based access control to grant appropriate permissions to individual accounts rather than relying on broadly privileged shared credentials that multiple users can access.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf",
+		  "https://learn.microsoft.com/en-us/windows/win32/secmgmt/password-filters"
+        ]
+      },
+      "PASS004002": {
+        "description": "Weak passwords detected during audit.",
+        "remediation": "Change weak passwords and enforce stronger password policies.  Implement password filtering to prevent weak/common passwords from being set.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf",
+		  "https://jetpack.com/resources/weak-passwords/"
+        ]
+      },
+      "PASS005001": {
+        "description": "Work credentials saved to a browser password manager synced with personal email accounts expose corporate authentication data outside organizational control and monitoring. If the personal email account is compromised, attackers can access the synced password vault containing work credentials, enabling unauthorized access to corporate systems from external locations. This configuration also means sensitive work passwords are stored on personal devices and cloud services that lack enterprise security controls, data loss prevention policies, or compliance oversight. Additionally, when employees leave the organization, there's no way to remotely wipe work credentials from their personal password manager, creating persistent access risks that can't be centrally managed or revoked.",
+        "remediation": "Deploy Group Policy Objects (GPOs) to disable browser password syncing features and force users to sign into browsers with their corporate accounts rather than personal accounts. Configure Chrome policies like 'BrowserSignin' set to forced and 'SyncDisabled' set to true, along with Firefox equivalent policies to prevent personal account usage and password synchronization to external services. Implement enterprise password manager solutions like BitWarden Business or 1Password Business that provide centralized control over work credentials while maintaining user convenience. Establish clear policies prohibiting the storage of work credentials in personal password managers and regularly audit browser configurations to ensure compliance with syncing restrictions.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf",
+		  "Cisco Talos Official Incident Report: https://blog.talosintelligence.com/recent-cyber-attack/",
+		  "Active Directory Pro - Chrome Password Sync Disable: https://activedirectorypro.com/disable-password-saving-in-chrome-using-group-policy/",
+		  "Bitwarden - Deactivate Browser Password Managers: https://bitwarden.com/help/deactivate-browser-password-managers/",
+		  "4sysops - Configure Password Managers via GPO: https://4sysops.com/archives/configure-password-managers-in-chrome-edge-and-firefox-using-group-policy/"
+        ]
+      },
+      "PASS006001": {
+        "description": "Enterprise password managers provide centralized, encrypted storage that protects credentials from browser-based vulnerabilities and personal account compromises while maintaining organizational control over sensitive authentication data. They offer comprehensive auditing capabilities that track which passwords were accessed, shared, or modified by specific users, enabling security teams to investigate incidents and ensure compliance with access policies. When employees leave the organization, enterprise password managers allow immediate revocation of access to all shared credentials and seamless transfer of account ownership to remaining team members, preventing knowledge loss and maintaining business continuity without requiring widespread password changes across multiple systems.",
+        "remediation": "Implement a centralized enterprise password manager like Bitwarden Business, 1Password Business, or CyberArk to replace browser-based credential storage and personal password tools. Configure single sign-on integration, enforce strong password policies through the platform, and establish shared vaults for team credentials with role-based access controls. Require all employees to migrate work credentials from personal tools within 30 days, disable browser password managers via Group Policy, and establish regular auditing of password access logs to monitor credential usage and sharing activities across the organization.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+		  "https://www.my1login.com/blog/cs-the-enterprise-risks-of-personal-password-managers"
+        ]
+      },
+      "PASS006002": {
+        "description": "Missing personal password manager installation.",
+        "remediation": "Install missing personal password manager for users.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+		  "https://www.my1login.com/blog/cs-the-enterprise-risks-of-personal-password-managers"
+        ]
+      },
+      "PASS007001": {
+        "description": "Passwords exposed in AD description fields.",
+        "remediation": "Reset exposed passwords found in Active Directory description fields.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/",
+		  "NIST Special Publication 800-63B Digital Identity Guidelines: https://pages.nist.gov/800-63-4/sp800-63b.html"
+        ]
+      }
+    }
+  },
+  "Active Directory": {
+    "controls": {
+      "AD001001": {
+        "description": "Active Directory Certificate Services (ADCS) certificate template misconfigurations create privilege escalation opportunities where low-privileged users can request certificates that grant them elevated access to domain resources. Overly permissive templates may allow users to specify arbitrary Subject Alternative Names (SANs), enabling them to request certificates for high-privilege accounts like domain administrators. Weak enrollment permissions on certificate templates can allow attackers to enroll certificates on behalf of other users, while templates configured for authentication without proper access controls can be exploited to authenticate as any domain user. These vulnerabilities enable attackers to move laterally across the network, escalate privileges, and potentially achieve domain administrator access through certificate-based authentication bypass.",
+        "remediation": "Disable or correct misconfigured ADCS templates to prevent privilege escalation - see evidence for details.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/ad-cs/",
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+        ]
+      },
+      "AD002001": {
+        "description": "Machine account quota settings in Active Directory allow domain users to create computer objects, which can be exploited by attackers to generate Kerberos tickets and facilitate lateral movement attacks. By default, any authenticated user can create up to 10 machine accounts, providing attackers with persistent access points that can be used for resource-based constrained delegation attacks, shadow credentials, and other advanced persistence techniques. Malicious actors can leverage these self-created computer accounts to perform privilege escalation, establish covert communication channels, and maintain access even after primary compromise vectors are remediated. The machine accounts also provide attackers with service principal names (SPNs) that can be targeted for Kerberoasting attacks to extract password hashes.",
+        "remediation": "Set machine account quota to 0 to prevent unauthorized computer account creation.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/",
+		  "https://www.networksgroup.com/blog/easily-remediated-vulnerabilities-machine-account-quota"
+        ]
+      },
+      "AD003001": {
+        "description": "LDAP anonymous access is enabled. LDAP anonymous access allows unauthenticated users to query Active Directory and extract sensitive information including user accounts, group memberships, password policies, and organizational structure without providing credentials. Attackers can leverage anonymous LDAP queries to enumerate domain users for targeted attacks, identify high-privilege accounts, discover service accounts with potentially weak passwords, and map organizational hierarchy for social engineering campaigns. This information disclosure enables attackers to build comprehensive target lists, understand domain trust relationships, and identify potential attack vectors before attempting authentication, significantly reducing the reconnaissance effort required for successful domain compromise.",
+        "remediation": "Disable unauthenticated LDAP binds to prevent information disclosure.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/",
+		  "https://www.cobalt.io/blog/pentester-guide-ldap-bind-method-vulnerabilities"
+        ]
+      },
+      "AD004001": {
+        "description": "Installing third-party applications on domain controllers introduces significant security risks by expanding the attack surface on the most critical infrastructure components in an Active Directory environment. Any vulnerability in third-party software running on a domain controller could provide attackers with immediate access to the highest privilege levels in the domain, including the ability to modify user accounts, group policies, and authentication mechanisms. Additional software also increases the risk of configuration conflicts, performance degradation, and stability issues that could cause domain-wide authentication failures or service disruptions. Since domain controllers handle all authentication requests and store sensitive cryptographic material like Kerberos keys, any compromise of these systems through third-party vulnerabilities can result in complete domain takeover and persistent access that's extremely difficult to remediate.",
+        "remediation": "Remove third-party applications from domain controllers to reduce attack surface if they are not required for business purposes.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/"
+        ]
+      },
+      "AD005001": {
+        "description": "Running the print spooler service on domain controllers creates significant security vulnerabilities, particularly through exploits like PrintNightmare (CVE-2021-1675/CVE-2021-34527) that allow attackers to achieve remote code execution with SYSTEM privileges. The print spooler service exposes additional network endpoints and authentication pathways that attackers can exploit to gain elevated access to the domain controller, potentially leading to complete domain compromise. Print spooler vulnerabilities have historically been used for privilege escalation and lateral movement attacks, and since domain controllers are the most critical infrastructure components, any service running on them that isn't essential for domain operations unnecessarily increases the attack surface and risk of catastrophic security breaches.",
+        "remediation": "Immediately disable the print spooler service on all domain controllers and deploy dedicated Windows Server instances specifically for print management functions. Migrate all existing printer objects, drivers, and print queues to the new dedicated print servers, ensuring proper driver installation and configuration testing before decommissioning spooler services on DCs. Configure Group Policy to redirect client print connections to the new print servers and establish monitoring to ensure no print-related services are inadvertently re-enabled on domain controllers. Apply the latest security patches to dedicated print servers and implement network segmentation to limit their access to only necessary domain resources while maintaining centralized print management capabilities.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/",
+		  "https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack"
+        ]
+      },
+      "AD006001": {
+        "description": "Known vulnerabilities detected on domain controllers.",
+        "remediation": "Patch known domain controller vulnerabilities according to security bulletins.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/",
+		  "https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack"
+        ]
+      },
+      "AD007001": {
+        "description": "DHCP/DNS services running on domain controllers. Separating DHCP services from domain controllers is critical based on Akamai's research, which found that when DHCP servers are installed on domain controllers, attackers can exploit DHCP administrators group privileges to escalate to domain admin access, and leverage DNS dynamic updates to overwrite arbitrary DNS records without authentication. Akamai discovered that 57% of networks running Microsoft DHCP have the service installed on domain controllers, making them vulnerable by default to DNS spoofing attacks that can lead to credential theft and full Active Directory domain compromise. The research demonstrates that attackers can abuse legitimate DHCP features to coerce authentication from domain controllers and perform Kerberos relay attacks, while simultaneously manipulating DNS records to redirect traffic and intercept sensitive communications across the entire domain.",
+        "remediation": "Separate DHCP services from domain controllers to dedicated servers or network equipment.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/",
+		  "https://www.akamai.com/blog/security-research/spoofing-dns-by-abusing-dhcp"
+        ]
+      },
+      "AD008001": {
+        "description": "Internet browsing from domain controllers creates extreme security risks because domain administrator accounts are typically logged into these systems, making any web-based compromise immediately catastrophic for the entire domain. When DCs access the internet, they become vulnerable to drive-by downloads, malicious websites, phishing attacks, and browser exploits that could execute with the highest possible privileges in the Active Directory environment. Any malware or compromise occurring during internet browsing would have immediate access to domain controller services, Kerberos authentication mechanisms, and the ability to manipulate all domain accounts and policies. Since domain controllers should be treated as the most secure and isolated systems in the network, exposing them to internet threats through web browsing violates fundamental security principles and creates unnecessary attack vectors that could result in complete domain takeover.",
+        "remediation": "Prevent web browsing on domain controllers by disabling browsers and implementing restrictions.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/",
+		  "https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack"
+        ]
+      },
+      "AD009001": {
+        "description": "LAN Manager Authentication Level not configured to most secure setting. LANManager authentication levels below 'Send NTLMv2 response only. Refuse LM & NTLM' allow the use of weak legacy authentication protocols (LM and NTLMv1) that are highly vulnerable to cryptographic attacks. LM hashes can be cracked within seconds using modern hardware due to their inherently weak design, while NTLMv1 is susceptible to pass-the-hash attacks and rainbow table lookups. These older protocols also lack proper salt and use weak encryption algorithms that enable attackers to easily extract plaintext passwords from captured network traffic or stolen hash values. Allowing these legacy authentication methods provides attackers with multiple pathways to compromise user credentials and move laterally across the network using significantly weaker cryptographic protections than NTLMv2.",
+        "remediation": "Set LAN Manager Authentication Level to 'Send NTLMv2 response only. Refuse LM & NTLM' to prevent downgrade attacks.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/network-security-lan-manager-authentication-level",
+          "https://www.cisecurity.org/benchmark/microsoft_windows_server"
+        ]
+      },
+      "AD010001": {
+        "description": "KRBTGT password age exceeds recommended rotation period.  The krbtgt account holds the master key for all Kerberos ticket-granting tickets in the Active Directory domain, making it the most critical cryptographic secret in the entire environment. If the krbtgt password hash is compromised, attackers can create Golden Tickets that provide persistent, undetectable access to any resource in the domain with unlimited privileges and validity periods. Regular rotation of the krbtgt password invalidates any previously stolen credentials and limits the window of opportunity for attackers to exploit compromised keys. Without frequent rotation, a single breach that exposes the krbtgt hash can provide attackers with permanent domain administrator access that bypasses all normal authentication controls and logging mechanisms, making detection and remediation extremely difficult.",
+        "remediation": "Rotate KRBTGT password at least annually to invalidate potential Golden Ticket attacks.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/manage/ad-forest-recovery-resetting-the-krbtgt-password",
+		  "https://www.linkedin.com/pulse/golden-ticket-attack-understanding-mitigating-kerberos-marcus-burkert-smxbe/"
+        ]
+      },
+      "AD011001": {
+        "description": "Risky rights assigned to specified groups.  Active Directory DACL misconfigurations allow unprivileged users to modify or control higher-privileged accounts and objects, creating privilege escalation pathways that bypass intended security boundaries. When low-privilege users have permissions like 'WriteProperty,' 'WriteDACL,' or 'GenericWrite' over privileged accounts, they can reset passwords, modify group memberships, or grant themselves additional permissions on sensitive objects. These excessive DACL rights enable attackers to escalate from standard user accounts to domain administrator privileges by manipulating the properties of service accounts, administrative users, or critical security groups. The risk is particularly severe because these permissions operate at the Active Directory object level, allowing attackers to bypass traditional access controls and directly modify the security descriptors that govern domain authentication and authorization.",
+        "remediation": "Remove risky rights from specified groups and implement principle of least privilege.",
+        "references": [
+          "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/",
+		  "Microsoft Learn - Access Control Lists Documentation: https://learn.microsoft.com/en-us/windows/win32/secauthz/access-control-lists"
+        ]
+      }
+    }
+  },
+  "Common Controls": {
+    "controls": {
+      "CC001001": {
+        "description": "Unnecessary cloud storage sites not blocked.  Blocking unnecessary cloud storage sites prevents attackers from using popular platforms like Dropbox, MEGA, SendSpace, and file-sharing services as conduits for malware delivery and data exfiltration. Cybercriminals frequently host malicious payloads on legitimate cloud storage platforms to bypass security filters, since these domains are typically trusted and rarely blocked by traditional security tools. These same platforms provide attackers with convenient channels to exfiltrate sensitive corporate data, as uploads to cloud storage appear as normal web traffic and can evade data loss prevention systems. By restricting access to non-essential cloud storage services, organizations can significantly reduce both inbound malware risks and outbound data theft while maintaining necessary business functionality through approved enterprise cloud solutions.",
+        "remediation": "Block unnecessary cloud storage sites through web content filtering.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+		  "https://lots-project.com/"
+        ]
+      },
+      "CC001002": {
+        "description": "Blocking unnecessary Remote Monitoring and Management (RMM) tools at the network level prevents threat actors from using legitimate administrative software like TeamViewer, AnyDesk, Chrome Remote Desktop, and similar tools to establish persistent remote access to compromised systems. Attackers frequently abuse these trusted RMM platforms because they appear as legitimate business traffic, bypass security controls, and provide full desktop control equivalent to physical access to the machine. Once installed, RMM tools allow attackers to maintain long-term persistence, move laterally across networks, deploy additional malware, and exfiltrate data while operating within normal administrative channels. These tools are particularly dangerous because they often auto-start, create encrypted communication channels that evade network monitoring, and can be installed by users without requiring administrative privileges, making detection and remediation extremely challenging.",
+        "remediation": "Block unnecessary RMM tools through web content filtering.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+		  "https://lolrmm.io/"
+        ]
+      },
+      "CC001003": {
+        "description": "Known security risky categories not blocked.",
+        "remediation": "Block known security risky website categories through content filtering.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8"
+        ]
+      },
+      "CC001004": {
+        "description": "Uncategorized sites not blocked by web filtering. Blocking uncategorized websites is critical because threat actors continuously register new domains and infrastructure to stay ahead of security categorization services and reputation systems. Attackers exploit the window between domain registration and security vendor analysis, using fresh domains for malware hosting, phishing campaigns, and command-and-control communications before they can be identified and blocked. This creates a dangerous 'race condition' where malicious infrastructure operates undetected until security researchers discover and categorize it, at which point attackers simply abandon the burned domains and register new ones. By allowing uncategorized sites, organizations provide attackers with a constantly refreshing pool of potential attack infrastructure that bypasses traditional reputation-based blocking, making it essential to implement default-deny policies that block unknown domains until they can be properly vetted and approved for business use.",
+        "remediation": "Block uncategorized sites through web content filtering policies.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8"
+        ]
+      },
+      "CC001005": {
+        "description": "Anonymizers and personal VPNs not blocked.",
+        "remediation": "Block anonymizers and personal VPNs through web content filtering.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8"
+        ]
+      },
+      "CC001006": {
+        "description": "Hacking categories not blocked by web filtering.",
+        "remediation": "Block hacking-related website categories through content filtering.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8"
+        ]
+      },
+      "CC001007": {
+        "description": "Web content filtering logs not retained for at least 30 days.",
+        "remediation": "Ensure web content filtering logs are retained for at least 30 days.",
+        "references": [
+          "https://csrc.nist.gov/publications/detail/sp/800-92/final",
+		  "https://learn.microsoft.com/en-us/purview/audit-log-retention-policies"
+        ]
+      },
+      "CC002001": {
+        "description": "Network intrusion detection not implemented. Network intrusion detection serves as a critical second layer of defense that monitors network traffic for malicious activity that may bypass endpoint security solutions, providing visibility into attacks occurring at the network level. Without network IDS/IPS, organizations lack the ability to detect lateral movement, command-and-control communications, data exfiltration attempts, and attack patterns that span multiple systems or exploit network protocols directly. Attackers can leverage network-based techniques like man-in-the-middle attacks, DNS tunneling, network reconnaissance, and encrypted channel abuse that may not trigger endpoint alerts but create detectable network signatures. Network intrusion detection also provides crucial context for incident response by showing attack progression across network segments, identifying compromised systems that may have disabled or bypassed endpoint agents, and detecting insider threats or compromised credentials being used for unauthorized network access.",
+        "remediation": "Implement network intrusion detection systems for threat monitoring.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+		  "https://suricata.io"
+        ]
+      },
+      "CC002002": {
+        "description": "Egress connections not protected by network intrusion detection.",
+        "remediation": "Ensure all egress connections are protected by NIDS.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+		  "https://suricata.io/"
+        ]
+      },
+      "CC002003": {
+        "description": "Location connections not protected by network intrusion detection.",
+        "remediation": "Ensure all location connections are protected by NIDS.",
+        "references": [
+          "https://www.cisecurity.org/controls/v8",
+		  "https://suricata.io/"
+        ]
+      },
+	  "CC003001": {
+	  "description": "Dangerous file extensions not blocked in email filtering. Email remains the primary attack vector for malware delivery, with attackers frequently using executable file attachments like .exe, .scr, .bat, .cmd, .pif, and .com files to bypass security controls and achieve initial system compromise.",
+	  "remediation": "Configure email security gateways to automatically block dangerous file extensions including .exe, .scr, .bat, .cmd, .pif, .com, .vbs, .js, .jar, and .msi files.",
+	  "references": [
+		"https://www.cisecurity.org/controls/v8",
+		"https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/"
+	  ]
+	},
+	"CC003002": {
+	  "description": "Attachment sandboxing not implemented for email security. Email attachment sandboxing provides critical protection against zero-day malware and advanced persistent threats that bypass signature-based detection.",
+	  "remediation": "Deploy advanced email security solutions with integrated sandboxing capabilities such as Microsoft Defender for Office 365, Proofpoint TAP, or Mimecast.",
+	  "references": [
+		"https://www.cisecurity.org/controls/v8",
+		"https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/safe-attachments"
+	  ]
+	},
+	"CC003003": {
+	  "description": "Email impersonation protection policies not deployed. Business Email Compromise (BEC) attacks exploit trusted relationships by impersonating executives, vendors, or business partners.",
+	  "remediation": "Implement comprehensive impersonation protection policies that detect and block display name spoofing, domain impersonation, and executive impersonation attempts.",
+	  "references": [
+		"https://www.cisecurity.org/controls/v8",
+		"https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/anti-phishing-protection"
+	  ]
+	},
+	"CC003004": {
+	  "description": "Link rewriting and scanning not configured for email security. Malicious URLs in emails provide attackers with dynamic attack capabilities that can bypass static security controls.",
+	  "remediation": "Configure email security gateways to automatically rewrite URLs in all incoming emails, redirecting them through security scanning services.",
+	  "references": [
+		"https://www.cisecurity.org/controls/v8",
+		"https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/safe-links"
+	  ]
+	},
+	"CC003005": {
+	  "description": "Warning banners not configured for external emails. External email warning banners provide critical visual cues that help users identify potentially risky communications.",
+	  "remediation": "Configure email systems to automatically prepend clear warning banners to all emails originating from external domains.",
+	  "references": [
+		"https://www.cisecurity.org/controls/v8",
+		"https://docs.microsoft.com/en-us/exchange/mail-flow/transport-rules/"
+	  ]
+	},
+	"CC003006": {
+	  "description": "Browser isolation not deployed for email links. Browser isolation provides an additional security layer by executing potentially malicious websites in remote, disposable virtual browsers.",
+	  "remediation": "Deploy browser isolation solutions such as Microsoft Defender Application Guard, Menlo Security, or Symantec Web Isolation.",
+	  "references": [
+		"https://www.cisecurity.org/controls/v8",
+		"https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-application-guard/"
+	  ]
+	},
+	"CC003007": {
+	  "description": "Administrators not alerted on outbound malware detection. Outbound malware alerts indicate that internal systems have been compromised.",
+	  "remediation": "Configure email security gateways and endpoint protection systems to immediately alert security administrators when outbound emails contain malware.",
+	  "references": [
+		"https://www.cisecurity.org/controls/v8",
+		"https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf"
+	  ]
+	},
+	"CC003008": {
+	  "description": "Maximum outbound email thresholds not configured for mailboxes. Unlimited outbound email capabilities allow compromised accounts to send large volumes of spam or malware.",
+	  "remediation": "Configure maximum daily outbound email limits for all user mailboxes based on historical usage patterns.",
+	  "references": [
+		"https://docs.microsoft.com/en-us/exchange/mail-flow/recipients/recipient-limits",
+		"https://www.cisecurity.org/controls/v8"
+	  ]
+	},
+	"CC004001": {
+      "description": "Dedicated DMZ not created for internet-facing services. Internet-facing services deployed directly on internal networks expose critical infrastructure to direct attack.",
+      "remediation": "Establish a dedicated DMZ network segment with separate firewall zones for all internet-facing services.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+      ]
+    },
+    "CC004002": {
+      "description": "Inbound firewall ACLs not restricted to specific required services. Overly permissive inbound firewall rules create unnecessary attack surface.",
+      "remediation": "Configure firewall inbound rules using a default-deny approach that blocks all traffic except explicitly authorized services.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+      ]
+    },
+    "CC004003": {
+      "description": "Risky egress services and applications not restricted by firewall rules. Unrestricted outbound access allows compromised internal systems to communicate with external command-and-control servers.",
+      "remediation": "Implement default-deny egress filtering that blocks all outbound traffic except explicitly approved business applications and services.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+      ]
+    },
+    "CC004004": {
+      "description": "Geo-blocking not implemented for risky countries in firewall policies. Geographic-based blocking prevents attack traffic from high-risk countries.",
+      "remediation": "Configure firewall geo-blocking policies to deny traffic from high-risk countries where the organization has no legitimate business operations.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+      ]
+    },
+    "CC004005": {
+      "description": "Gateway antivirus not utilized for file downloads. Gateway-based antivirus scanning provides an essential checkpoint for detecting malware in downloaded files.",
+      "remediation": "Deploy gateway antivirus solutions on firewalls, proxy servers, or dedicated security appliances to scan all inbound file downloads.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+      ]
+    },
+    "CC004006": {
+      "description": "Firewall logs not retained for at least 30 days. Insufficient firewall log retention prevents security teams from conducting thorough incident investigations.",
+      "remediation": "Configure firewall logging systems to retain detailed traffic logs, security events, and policy violations for a minimum of 30 days.",
+      "references": [
+        "https://csrc.nist.gov/publications/detail/sp/800-92/final",
+        "https://www.cisecurity.org/controls/v8"
+      ]
+    },
+	"CC005001": {
+      "description": "Security alerts not centralized to group mailbox or security platform. Distributed security alerts across individual administrator accounts create single points of failure.",
+      "remediation": "Establish dedicated security group mailboxes or integrated security platforms that receive all alerts from endpoint protection, network security tools, identity systems, and cloud services.",
+      "references": [
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf",
+        "https://www.cisecurity.org/controls/v8"
+      ]
+    },
+    "CC005002": {
+      "description": "24/7 coverage not ensured for high-risk security alerts. High-priority security alerts require immediate response to prevent or minimize damage from active attacks.",
+      "remediation": "Establish 24/7 security operations center (SOC) coverage with qualified analysts trained to respond to high-priority alerts.",
+      "references": [
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf",
+        "https://www.cisecurity.org/controls/v8"
+      ]
+    },
+    "CC005003": {
+      "description": "Alert monitoring does not include EDR and antivirus systems. EDR and antivirus alerts provide critical early warning indicators of malware infections and system compromises.",
+      "remediation": "Integrate all EDR and antivirus solutions into centralized security monitoring platforms with automated alert forwarding.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf"
+      ]
+    },
+    "CC005004": {
+      "description": "Monitoring does not include high-risk web content filtering alerts. Web content filtering alerts indicate users are attempting to access malicious websites or prohibited content.",
+      "remediation": "Configure centralized monitoring of web content filtering systems to alert on high-risk categories including malware, phishing, and command-and-control communications.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf"
+      ]
+    },
+    "CC005005": {
+      "description": "Monitoring does not include high-risk email filtering alerts. Email filtering alerts provide critical indicators of phishing campaigns and malware delivery attempts.",
+      "remediation": "Integrate email security platforms into centralized monitoring systems with automated alerting for malware detections and phishing attempts.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf"
+      ]
+    },
+    "CC005006": {
+      "description": "Monitoring does not include high-risk network intrusion detection alerts. Network intrusion detection alerts identify malicious network activity and lateral movement.",
+      "remediation": "Configure centralized monitoring of network intrusion detection systems with automated alerting for high-priority signatures and behavioral anomalies.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf"
+      ]
+    },
+    "CC005007": {
+      "description": "Monitoring does not include high-risk identity protection alerts. Identity-based attacks including credential theft and privilege escalation represent critical threats.",
+      "remediation": "Integrate identity protection systems including Active Directory, Azure AD, and privileged access management into centralized monitoring.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://docs.microsoft.com/en-us/azure/active-directory/identity-protection/"
+      ]
+    },
+    "CC005008": {
+      "description": "Security alerts not retained for at least 1 year. Insufficient alert retention prevents comprehensive incident investigation and legal compliance requirements.",
+      "remediation": "Configure security monitoring platforms to retain all security alerts, events, and related metadata for a minimum of 1 year.",
+      "references": [
+        "https://csrc.nist.gov/publications/detail/sp/800-92/final",
+        "https://www.cisecurity.org/controls/v8"
+      ]
+    },
+	"CC006001": {
+      "description": "Backups do not include all critical systems required for business operations. Incomplete backup coverage leaves critical systems and data vulnerable to permanent loss during ransomware attacks, hardware failures, or natural disasters.",
+      "remediation": "Conduct comprehensive business impact analysis to identify all critical systems, applications, databases, and infrastructure components required for business operations, and ensure backup coverage includes domain controllers, file servers, email systems, business applications, and configuration data.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-34r1.pdf"
+      ]
+    },
+    "CC006002": {
+      "description": "Backups not stored offsite for disaster recovery protection. On-site backup storage provides no protection against facility-wide disasters including fires, floods, natural disasters, or physical attacks.",
+      "remediation": "Implement offsite backup storage using geographically separated facilities, cloud storage services, or remote data centers located at least 100 miles from primary operations.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-34r1.pdf"
+      ]
+    },
+    "CC006003": {
+      "description": "Backup systems use Active Directory authentication, creating vulnerability during domain compromise. Backup systems that rely on Active Directory authentication become inaccessible during domain-wide attacks or ransomware incidents when attackers disable domain services.",
+      "remediation": "Configure backup systems to use local authentication accounts, dedicated identity management systems, or hardware-based authentication that operates independently of Active Directory infrastructure.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-34r1.pdf"
+      ]
+    },
+    "CC006004": {
+      "description": "Backup systems lack anti-tampering protections, making them vulnerable to ransomware and malicious attacks. Without proper anti-tampering controls, attackers can modify, delete, or encrypt backup data to prevent recovery.",
+      "remediation": "Implement immutable backup storage solutions that prevent modification or deletion of backup data for defined retention periods, using technologies like object storage with legal hold or WORM capabilities.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-34r1.pdf"
+      ]
+    },
+    "CC006005": {
+      "description": "Backup systems not regularly tested to ensure recovery capabilities. Untested backups provide false confidence in disaster recovery capabilities and may fail during actual emergency situations.",
+      "remediation": "Establish quarterly backup testing procedures that include full system restoration to isolated test environments, verification of data integrity and completeness, and validation of recovery time objectives for all critical systems.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-34r1.pdf"
+      ]
+    },
+    "CC006006": {
+      "description": "Backup agents and applications not regularly patched against security vulnerabilities. Unpatched backup systems provide attackers with entry points into critical infrastructure through known vulnerabilities.",
+      "remediation": "Implement automated patch management for all backup software, agents, and infrastructure components with regular vulnerability scanning and security update deployment procedures.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+      ]
+    },
+	"CC007001": {
+      "description": "Security awareness training not provided upon initial hire for new employees. New employees represent significant security risks because they lack organizational security knowledge and may not understand company policies and procedures.",
+      "remediation": "Implement mandatory security awareness training as part of new employee onboarding that covers password policies, phishing recognition, social engineering tactics, acceptable use policies, and incident reporting procedures.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-50.pdf"
+      ]
+    },
+    "CC007002": {
+      "description": "Annual security awareness training not provided to maintain current security knowledge. Security threats, attack techniques, and organizational policies evolve continuously, requiring regular training updates.",
+      "remediation": "Deploy annual security awareness training programs that cover current threat landscapes, emerging attack techniques, updated organizational policies, and lessons learned from recent security incidents.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-50.pdf"
+      ]
+    },
+    "CC007003": {
+      "description": "Security awareness training effectiveness not measured or monitored for continuous improvement. Without measuring training effectiveness, organizations cannot determine whether security awareness programs successfully change employee behavior.",
+      "remediation": "Implement comprehensive training effectiveness measurement including pre- and post-training assessments, simulated phishing campaigns, security incident tracking related to human factors, and behavioral observation programs.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-50.pdf"
+      ]
+    },
+    "CC007004": {
+      "description": "Security awareness training content not updated annually to address current threats. Static training content becomes ineffective as threat landscapes evolve and new attack techniques emerge.",
+      "remediation": "Establish annual training content review and update procedures that incorporate current threat intelligence, lessons learned from recent security incidents, and emerging attack techniques.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-50.pdf"
+      ]
+    },
+	"CC008001": {
+      "description": "Mobile devices do not require authentication to unlock, leaving sensitive corporate data and applications accessible to unauthorized users who gain physical access to lost, stolen, or unattended devices.",
+      "remediation": "Configure mobile device management (MDM) policies that require strong device authentication including biometric authentication, complex PINs or passwords, and automatic device locking after short idle periods.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-124r2.pdf"
+      ]
+    },
+    "CC008002": {
+      "description": "Sensitive data not encrypted on mobile devices, exposing organizational information to unauthorized access through device theft, loss, or forensic examination.",
+      "remediation": "Enable full device encryption on all mobile devices using platform-native encryption capabilities like iOS Data Protection or Android device encryption, with centralized key management through MDM solutions.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-124r2.pdf"
+      ]
+    },
+    "CC008003": {
+      "description": "Jailbroken, rooted, or outdated mobile devices not prevented from accessing corporate resources, creating security vulnerabilities through compromised device integrity and missing security updates.",
+      "remediation": "Configure MDM policies that automatically detect and block jailbroken, rooted, or compromised devices from accessing corporate email, applications, and network resources.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-124r2.pdf"
+      ]
+    },
+    "CC008004": {
+      "description": "Unregistered mobile devices allowed email access, bypassing security controls and management capabilities that ensure appropriate protection of corporate communications and data.",
+      "remediation": "Implement conditional access policies that require device registration and compliance with organizational security standards before allowing email access, using MDM enrollment as a prerequisite for mail system connectivity.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/"
+      ]
+    },
+    "CC008005": {
+      "description": "Remote data wipe capability not available for mobile devices, preventing rapid response to device loss, theft, or compromise scenarios that could expose sensitive corporate data.",
+      "remediation": "Deploy MDM solutions with comprehensive remote wipe capabilities including selective corporate data removal, full device wipe, and application-specific data deletion based on incident severity and device ownership models.",
+      "references": [
+        "https://www.cisecurity.org/controls/v8",
+        "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-124r2.pdf"
+      ]
+    },
+      "CC009001": {
+        "description": "Multi-factor authentication not deployed for remote logins on server class devices.",
+        "remediation": "Deploy MFA for remote logins (RDP) on server class devices.",
+        "references": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf",
+		  "https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/rds-plan-mfa"
+        ]
+      }
+    }
+  },
+  "Office 365 Security": {
+    "controls": {
+      "O365001001": {
+        "description": "Unnecessary or risky countries not blocked in conditional access.",
+        "remediation": "Block unnecessary or risky countries through conditional access policies.",
+        "references": [
+          "https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/",
+		  "https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-block-by-location"
+        ]
+      },
+      "O365001002": {
+        "description": "Anonymizers and personal VPNs not blocked in conditional access.",
+        "remediation": "Block anonymizers and personal VPNs through conditional access policies.",
+        "references": [
+          "https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/",
+		  "https://hardwarelobby.com/blocking-anonymization-services-with-o365/"
+        ]
+      },
+      "O365001003": {
+        "description": "Registered/compliant/hybrid devices not required in conditional access.",
+        "remediation": "Require registered/compliant/hybrid devices through conditional access policies.",
+        "references": [
+          "https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/",
+		  "https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-all-users-device-compliance"
+        ]
+      },
+      "O365002001": {
+        "description": "Audit logs not retained for 90 days.",
+        "remediation": "Keep audit logs for 90 days to meet compliance and investigation requirements.",
+        "references": [
+          "https://docs.microsoft.com/en-us/microsoft-365/compliance/auditing-solutions-overview",
+		  "https://learn.microsoft.com/en-us/purview/audit-log-retention-policies"
+        ]
+      },
+      "O365002002": {
+        "description": "All cmdlets not being logged in Office 365.",
+        "remediation": "Log all cmdlets for comprehensive audit trail and security monitoring.",
+        "references": [
+          "https://docs.microsoft.com/en-us/microsoft-365/compliance/auditing-solutions-overview",
+		  "https://learn.microsoft.com/en-us/purview/audit-log-retention-policies"
+        ]
+      },
+      "O365003001": {
+        "description": "Identity Security Score recommendations not being managed.",
+        "remediation": "Manage recommendations in Identity Security Score to improve security posture.",
+        "references": [
+          "https://docs.microsoft.com/en-us/microsoft-365/security/",
+		  "https://learn.microsoft.com/en-us/defender-xdr/microsoft-secure-score-improvement-actions"
+        ]
+      },
+      "O365004001": {
+        "description": "App Security Score recommendations not being managed.",
+        "remediation": "Manage recommendations in App Security Score to improve application security.",
+        "references": [
+          "https://docs.microsoft.com/en-us/microsoft-365/security/",
+		  "https://learn.microsoft.com/en-us/defender-xdr/microsoft-secure-score-improvement-actions"
+        ]
+      },
+      "O365005001": {
+        "description": "Data Security Score recommendations not being managed.",
+        "remediation": "Manage recommendations in Data Security Score to improve data protection.",
+        "references": [
+          "https://docs.microsoft.com/en-us/microsoft-365/security/",
+		  "https://learn.microsoft.com/en-us/defender-xdr/microsoft-secure-score-improvement-actions"
+        ]
+      }
+    }
+  }
+}
