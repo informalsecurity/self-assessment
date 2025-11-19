@@ -1050,6 +1050,7 @@ function Get-GPOLogonScripts ($Server,$credential,$Domain){
         $GPOLogonScripts += Invoke-Command -ComputerName $Server -Credential $credential -ScriptBlock { param($fp);Get-ChildItem -Path $fp -Recurse -Depth 25 -Include scripts.ini -ErrorAction SilentlyContinue -Force| Select-String -Pattern "\\\\.*\.\w+" | ForEach-Object { $_.Matches.Value }} -ArgumentList $svpath
         $GPOLogonScripts += Invoke-Command -ComputerName $Server -Credential $credential -ScriptBlock { param($fp);Get-ChildItem -Path $fp -Recurse -Depth 25 -Include *.bat,*.cmd,*.ps1,*.vbs,*.vbe,*.exe,*.msi -ErrorAction SilentlyContinue -Force } -ArgumentList $svpath
     }
+    $GPOLogonScripts
 }
 function Get-NetlogonSysvol ($fqdn,$Server) {
 
