@@ -1707,7 +1707,7 @@ if ($NonExistentShares) {
 
 if ($UNCScripts) {
     # Find unsafe permissions for unc files found in logon scripts
-    $UnsafeUNCPermissions = Find-UnsafeLogonScriptPermissions -UNCScripts $UNCScripts -SafeUsersList $SafeUsers -Credential $credential -fqdn $fqdn -Server $Server
+    $UnsafeUNCPermissions = Find-UnsafeLogonScriptPermissions -LogonScripts $UNCScripts -SafeUsersList $SafeUsers -Credential $credential -fqdn $fqdn -Server $Server
 } else {
     Write-Host "[i] No UNC files found!`n" -ForegroundColor Cyan
 }
