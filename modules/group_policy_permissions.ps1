@@ -3,6 +3,7 @@ $password = ConvertTo-SecureString $global:config.t0_pass -AsPlainText -Force
 $t0_cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 $credential = $t0_cred
 $Domain = $global:config.fqdn
+$fqdn = $global:config.fqdn
 $Server = $global:config.dc_ip
 function Invoke-ScriptSentry{
 <#
@@ -1491,6 +1492,9 @@ function Find-UnsafeLogonScriptPermissions {
             if (!($Server -like "*.*")) {
                 $Server = $Server + "." + $fqdn
             }
+            if ($Server -eq ".$fqdn") {
+                $Server = $fqdn
+            }
             $Share = ($script -Split "\\")[3]
             $filename = ($script -Split "\\")[-1]
             $sb = {
@@ -1506,8 +1510,18 @@ function Find-UnsafeLogonScriptPermissions {
                 param($fp)
                 (Get-Acl $fp -ErrorAction SilentlyContinue).Access
             }
-            $ShareACL = Invoke-Command -Credential $credential -ComputerName $Server -ScriptBlock $sb -ArgumentList $share
-            $FileACL = Invoke-Command -Credential $credential -ComputerName $Server -ScriptBlock $fb -ArgumentList $script
+            try {
+                $ShareACL = Invoke-Command -Credential $credential -ComputerName $Server -ScriptBlock $sb -ArgumentList $share
+            } catch {
+                Write-Host "#Find-UnsafeLogonScriptPermissions# Error connecting to $Server for Share"
+                $share
+            }
+            try {
+                $FileACL = Invoke-Command -Credential $credential -ComputerName $Server -ScriptBlock $fb -ArgumentList $script
+            } catch {
+                Write-Host "#Find-UnsafeLogonScriptPermissions# Error connecting to $Server for script"
+                $script
+            }
             #####
             $share_unsafe = $false
             foreach ($perm in $ShareACL) {
@@ -1686,7 +1700,6 @@ if ($LogonScripts) {
 
     # Find nonexistent shares
     $NonExistentSharesScripts = Find-NonexistentShares -LogonScripts $LogonScripts -AdminUsers $AdminUsers -Credential $credential -fqdn $fqdn -Server $Server
-    $NonExistentSharesScripts += Find-NonexistentShares -LogonScripts $UNCScripts -AdminUsers $AdminUsers -Credential $credential -fqdn $fqdn -Server $Server
     $NonExistentShares = $NonExistentSharesScripts | Where-Object {$_.Exploitable -eq 'Potentially'} | Sort-Object -Property Share -Unique
 
     # Find unsafe permissions on logon scripts
@@ -1715,7 +1728,7 @@ if ($UNCScripts) {
 
 # Find unsafe NETLOGON & SYSVOL share permissions
 $NetlogonSysvol = Get-NetlogonSysvol $fqdn $Server
-$UnsafeNetlogonSysvol = Find-UnsafeUNCPermissions -UNCScripts $NetlogonSysvol -SafeUsersList $SafeUsers  -Credential $credential -Server $Server
+
 
 if ($GPOLogonScripts) {
     # Find unsafe permissions on GPO logon scripts
